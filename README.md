@@ -39,3 +39,11 @@
 
 Выполнение дополнительного условия гарантирует четверть количества баллов за контрольный семинар, достаточного для оценки "отлично".
 Таким образом, выполнение дополнительного задания для каждой работы (их 4) даст автоматически оценку "отлично" за курс.
+
+---
+
+## DVC
+
+```
+dvc run -n preprocess -f -d src/preprocess.py -d data/spam.csv -o data/spam_X.csv -o data/spam_y.csv -o data/train/spam_X.csv -o data/train/spam_y.csv -o data/test/spam_X.csv -o data/test/spam_y.csv "python src/preprocess.py"
+```
