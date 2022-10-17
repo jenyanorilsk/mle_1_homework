@@ -1,6 +1,8 @@
 
 # Лабораторная работа 1
 
+## Задание
+
 **Вариант 11:** https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset
 
 **Цель работы**:
@@ -42,9 +44,19 @@
 
 ---
 
-## DVC
+## Комментарии к решению
 
-Добавлен DVC этап для препроцессинга и отслеживания изменений в коде препроцессинга и данных:
-```
-dvc run -n preprocess -f -d src/preprocess.py -d config.ini -d data/spam.csv -o data/spam_X.csv -o data/spam_y.csv -o data/train/spam_X.csv -o data/train/spam_y.csv -o data/test/spam_X.csv -o data/test/spam_y.csv "python src/preprocess.py"
-```
+### DVC
+
+Добавлен DVC этап для препроцессинга и отслеживания изменений в коде препроцессинга и данных.
+Команда для добавления отслеживания:
+
+``
+dvc run -n preprocess -f -d src/preprocess.py -d data/spam.csv -o data/spam_X.csv -o data/spam_y.csv -o data/train/spam_X.csv -o data/train/spam_y.csv -o data/test/spam_X.csv -o data/test/spam_y.csv "python src/preprocess.py"
+``
+
+Мы устанавливаем зависимость данных от кода препроцессинга, исходных данных.
+
+Можно было бы добавить и конфигурационный файл, но он переписывается при обучении модели, поэтому нет смысла этого делать в данном решении.
+
+Можно было разбить на большее число шагов и зависимостей, чтобы выстроить конвеер, опираясь на примеры из [документации](https://dvc.org/doc/command-reference/run) и [статьи](https://habr.com/ru/company/raiffeisenbank/blog/461803/), но я не стал усложнять этот пример.

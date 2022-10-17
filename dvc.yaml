@@ -2,7 +2,6 @@ stages:
   preprocess:
     cmd: python src/preprocess.py
     deps:
-    - config.ini
     - data/spam.csv
     - src/preprocess.py
     outs:

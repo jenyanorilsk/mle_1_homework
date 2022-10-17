@@ -3,9 +3,6 @@ stages:
   preprocess:
     cmd: python src/preprocess.py
     deps:
-    - path: config.ini
-      md5: c6cbaa694b945d86a6f6501710de9f01
-      size: 380
     - path: data/spam.csv
       md5: 181f52dfcd50655bc379b8f7c41df904
       size: 503663
