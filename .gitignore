@@ -129,4 +129,6 @@ dmypy.json
 .pyre/
 
 # Custom
+*.log
 data/
+!/data/spam.csv
