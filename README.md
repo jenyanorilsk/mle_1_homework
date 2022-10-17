@@ -44,6 +44,7 @@
 
 ## DVC
 
+Добавлен DVC этап для препроцессинга и отслеживания изменений в коде препроцессинга и данных:
 ```
-dvc run -n preprocess -f -d src/preprocess.py -d data/spam.csv -o data/spam_X.csv -o data/spam_y.csv -o data/train/spam_X.csv -o data/train/spam_y.csv -o data/test/spam_X.csv -o data/test/spam_y.csv "python src/preprocess.py"
+dvc run -n preprocess -f -d src/preprocess.py -d config.ini -d data/spam.csv -o data/spam_X.csv -o data/spam_y.csv -o data/train/spam_X.csv -o data/train/spam_y.csv -o data/test/spam_X.csv -o data/test/spam_y.csv "python src/preprocess.py"
 ```

@@ -1,0 +1,14 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - config.ini
+    - data/spam.csv
+    - src/preprocess.py
+    outs:
+    - data/spam_X.csv
+    - data/spam_y.csv
+    - data/test/spam_X.csv
+    - data/test/spam_y.csv
+    - data/train/spam_X.csv
+    - data/train/spam_y.csv
