@@ -63,7 +63,7 @@ dvc run -n preprocess -f -d src/preprocess.py -d data/spam.csv -o data/spam_X.cs
 
 ### Unit-Test
 
-``
+```
 (mle) Z:\# MIPT\MLE\mle_1_homework>python src\unit_tests\test_preprocess.py -v
 test_get_data (__main__.TestDataMaker) ... 2022-10-21 16:48:06,090 — preprocess — INFO — DataMaker is ready
 2022-10-21 16:48:06,138 — preprocess — INFO — X and y data are ready
@@ -86,9 +86,9 @@ ok
 Ran 3 tests in 0.265s
 
 OK
-``
+```
 
-``
+```
 (mle) Z:\# MIPT\MLE\mle_1_homework>python src\unit_tests\test_train.py -v      
 test_train_model (__main__.TestTrain) ... 2022-10-21 16:48:45,708 — train — INFO — SpamClassifier is ready
 2022-10-21 16:48:45,809 — train — INFO — Z:\# MIPT\MLE\mle_1_homework\experiments\model.sav is saved
@@ -98,9 +98,9 @@ ok
 Ran 1 test in 0.121s
 
 OK
-``
+```
 
-``
+```
 (mle) Z:\# MIPT\MLE\mle_1_homework>python src\unit_tests\test_predict.py -v
 test_predict (__main__.TestPredict) ... 2022-10-21 16:51:53,399 — predict — INFO — Predictor is ready
 ok
@@ -109,4 +109,4 @@ ok
 Ran 1 test in 0.013s
 
 OK
-``
+```
