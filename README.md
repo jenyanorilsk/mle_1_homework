@@ -15,7 +15,7 @@
 2. - [X] Провести подготовку данных для набора данных, согласно варианту задания;
 3. - [X] Разработать ML модель с ЛЮБЫМ классическим алгоритмом классификации, кластеризации, регрессии и т. д.;
 4. - [X] Конвертировать модель из *.ipynb в .py скрипты;
-5. - [ ] Покрыть код тестами, используя любой фреймворк/библиотеку;
+5. - [X] Покрыть код тестами, используя любой фреймворк/библиотеку;
 6. - [X] Задействовать DVC;
 7. - [ ] Использовать Docker для создания docker image.
 8. - [ ] Наполнить дистрибутив конфигурационными файлами:
@@ -63,50 +63,54 @@ dvc run -n preprocess -f -d src/preprocess.py -d data/spam.csv -o data/spam_X.cs
 
 ### Unit-Test
 
-```
-(mle) Z:\# MIPT\MLE\mle_1_homework>python src\unit_tests\test_preprocess.py -v
-test_get_data (__main__.TestDataMaker) ... 2022-10-21 16:48:06,090 — preprocess — INFO — DataMaker is ready
-2022-10-21 16:48:06,138 — preprocess — INFO — X and y data are ready
-ok
-test_save_splitted_data (__main__.TestDataMaker) ... 2022-10-21 16:48:06,140 — preprocess — INFO — DataMaker is ready
-2022-10-21 16:48:06,140 — preprocess — INFO — DataMaker is ready
-2022-10-21 16:48:06,210 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\spam_X.csv is saved
-2022-10-21 16:48:06,210 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\spam_X.csv is saved
-ok
-test_split_data (__main__.TestDataMaker) ... 2022-10-21 16:48:06,211 — preprocess — INFO — DataMaker is ready
-2022-10-21 16:48:06,351 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\test\spam_y.csv is saved
-2022-10-21 16:48:06,351 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\test\spam_y.csv is saved
-2022-10-21 16:48:06,351 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\test\spam_y.csv is saved
-2022-10-21 16:48:06,352 — preprocess — INFO — Train and test data are ready
-2022-10-21 16:48:06,352 — preprocess — INFO — Train and test data are ready
-2022-10-21 16:48:06,352 — preprocess — INFO — Train and test data are ready
-ok
+Вывод команды тестирования:
 
+```
+(mle) Z:\# MIPT\MLE\mle_1_homework>coverage run -a src\unit_tests\test_preprocess.py && coverage run -a src\unit_tests\test_train.py && coverage run -a src\unit_tests\test_predict.py
+
+2022-10-21 23:41:04,271 — preprocess — INFO — DataMaker is ready
+2022-10-21 23:41:04,325 — preprocess — INFO — X and y data are ready
+.2022-10-21 23:41:04,326 — preprocess — INFO — DataMaker is ready
+2022-10-21 23:41:04,326 — preprocess — INFO — DataMaker is ready
+2022-10-21 23:41:04,369 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\spam_X.csv is saved
+2022-10-21 23:41:04,369 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\spam_X.csv is saved
+.2022-10-21 23:41:04,370 — preprocess — INFO — DataMaker is ready
+2022-10-21 23:41:04,370 — preprocess — INFO — DataMaker is ready
+2022-10-21 23:41:04,370 — preprocess — INFO — DataMaker is ready
+2022-10-21 23:41:04,418 — preprocess — INFO — X and y data are ready
+2022-10-21 23:41:04,418 — preprocess — INFO — X and y data are ready
+2022-10-21 23:41:04,418 — preprocess — INFO — X and y data are ready
+2022-10-21 23:41:04,473 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\train\spam_X.csv is saved
+2022-10-21 23:41:04,473 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\train\spam_X.csv is saved
+2022-10-21 23:41:04,473 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\train\spam_X.csv is saved
+2022-10-21 23:41:04,483 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\train\spam_y.csv is saved
+2022-10-21 23:41:04,483 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\train\spam_y.csv is saved
+2022-10-21 23:41:04,483 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\train\spam_y.csv is saved
+2022-10-21 23:41:04,490 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\test\spam_X.csv is saved
+2022-10-21 23:41:04,490 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\test\spam_X.csv is saved
+2022-10-21 23:41:04,490 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\test\spam_X.csv is saved
+2022-10-21 23:41:04,494 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\test\spam_y.csv is saved
+2022-10-21 23:41:04,494 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\test\spam_y.csv is saved
+2022-10-21 23:41:04,494 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\test\spam_y.csv is saved
+2022-10-21 23:41:04,495 — preprocess — INFO — Train and test data are ready
+2022-10-21 23:41:04,495 — preprocess — INFO — Train and test data are ready
+2022-10-21 23:41:04,495 — preprocess — INFO — Train and test data are ready
+.
 ----------------------------------------------------------------------
-Ran 3 tests in 0.265s
+Ran 3 tests in 0.226s
 
 OK
-```
-
-```
-(mle) Z:\# MIPT\MLE\mle_1_homework>python src\unit_tests\test_train.py -v      
-test_train_model (__main__.TestTrain) ... 2022-10-21 16:48:45,708 — train — INFO — SpamClassifier is ready
-2022-10-21 16:48:45,809 — train — INFO — Z:\# MIPT\MLE\mle_1_homework\experiments\model.sav is saved
-ok
-
+2022-10-21 23:41:06,925 — train — INFO — SpamClassifier is ready
+2022-10-21 23:41:07,074 — train — INFO — Z:\# MIPT\MLE\mle_1_homework\experiments\model.sav is saved
+.
 ----------------------------------------------------------------------
-Ran 1 test in 0.121s
+Ran 1 test in 0.177s
 
 OK
-```
-
-```
-(mle) Z:\# MIPT\MLE\mle_1_homework>python src\unit_tests\test_predict.py -v
-test_predict (__main__.TestPredict) ... 2022-10-21 16:51:53,399 — predict — INFO — Predictor is ready
-ok
-
+2022-10-21 23:41:09,508 — predict — INFO — Predictor is ready
+.
 ----------------------------------------------------------------------
-Ran 1 test in 0.013s
+Ran 1 test in 0.016s
 
 OK
 ```
