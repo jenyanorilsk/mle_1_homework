@@ -49,22 +49,23 @@ class Predictor():
         self.y_test = pd.read_csv(
             self.config["SPLIT_DATA"]["y_test"], index_col=0)
         self.y_test = self.y_test['classname']
-        self.log.info("Predictor is ready")
-
-    def predict(self) -> bool:
-
+        
         try:
-            classifier = pickle.load(
+            self.classifier = pickle.load(
                 open(self.config["MODEL"]["path"], "rb"))
         except FileNotFoundError:
             self.log.error(traceback.format_exc())
             sys.exit(1)
+        
+        self.log.info("Predictor is ready")
+
+    def predict(self) -> bool:
 
         args = self.parser.parse_args()        
         if args.tests == "smoke":
 
             try:
-                y_pred = classifier.predict(self.X_test)
+                y_pred = self.classifier.predict(self.X_test)
                 print('accuracy:', accuracy_score(self.y_test, y_pred))
                 print('confusion matrix:')
                 print(confusion_matrix(self.y_test, y_pred))
@@ -88,7 +89,7 @@ class Predictor():
                         X = [x['text'] for x in data['X']]
                         y = [y['classname'] for y in data['y']]
 
-                        score = classifier.score(X, y)
+                        score = self.classifier.score(X, y)
                         print(f'model has {score} score')
                     except Exception:
                         self.log.error(traceback.format_exc())
@@ -116,6 +117,9 @@ class Predictor():
                     shutil.copy(self.config["MODEL"]["path"], os.path.join(exp_dir, f'exp.sav'))
         
         return True
+    
+    def predict(self, text: list) -> list:
+        return self.classifier.predict(text)
 
 
 if __name__ == "__main__":
