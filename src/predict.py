@@ -51,8 +51,10 @@ class Predictor():
         self.y_test = self.y_test['classname']
         
         try:
-            self.classifier = pickle.load(
-                open(self.config["MODEL"]["path"], "rb"))
+            #self.classifier = pickle.load(
+            #    open(self.config["MODEL"]["path"], "rb"))
+            with open(self.config["MODEL"]["path"], "rb") as modelfile:
+                self.classifier = pickle.load(modelfile)
         except FileNotFoundError:
             self.log.error(traceback.format_exc())
             sys.exit(1)

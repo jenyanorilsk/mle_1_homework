@@ -60,3 +60,53 @@ dvc run -n preprocess -f -d src/preprocess.py -d data/spam.csv -o data/spam_X.cs
 Можно было бы добавить и конфигурационный файл, но он переписывается при обучении модели, поэтому нет смысла этого делать в данном решении.
 
 Можно было разбить на большее число шагов и зависимостей, чтобы выстроить конвеер, опираясь на примеры из [документации](https://dvc.org/doc/command-reference/run) и [статьи](https://habr.com/ru/company/raiffeisenbank/blog/461803/), но я не стал усложнять этот пример.
+
+### Unit-Test
+
+``
+(mle) Z:\# MIPT\MLE\mle_1_homework>python src\unit_tests\test_preprocess.py -v
+test_get_data (__main__.TestDataMaker) ... 2022-10-21 16:48:06,090 — preprocess — INFO — DataMaker is ready
+2022-10-21 16:48:06,138 — preprocess — INFO — X and y data are ready
+ok
+test_save_splitted_data (__main__.TestDataMaker) ... 2022-10-21 16:48:06,140 — preprocess — INFO — DataMaker is ready
+2022-10-21 16:48:06,140 — preprocess — INFO — DataMaker is ready
+2022-10-21 16:48:06,210 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\spam_X.csv is saved
+2022-10-21 16:48:06,210 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\spam_X.csv is saved
+ok
+test_split_data (__main__.TestDataMaker) ... 2022-10-21 16:48:06,211 — preprocess — INFO — DataMaker is ready
+2022-10-21 16:48:06,351 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\test\spam_y.csv is saved
+2022-10-21 16:48:06,351 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\test\spam_y.csv is saved
+2022-10-21 16:48:06,351 — preprocess — INFO — Z:\# MIPT\MLE\mle_1_homework\data\test\spam_y.csv is saved
+2022-10-21 16:48:06,352 — preprocess — INFO — Train and test data are ready
+2022-10-21 16:48:06,352 — preprocess — INFO — Train and test data are ready
+2022-10-21 16:48:06,352 — preprocess — INFO — Train and test data are ready
+ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.265s
+
+OK
+``
+
+``
+(mle) Z:\# MIPT\MLE\mle_1_homework>python src\unit_tests\test_train.py -v      
+test_train_model (__main__.TestTrain) ... 2022-10-21 16:48:45,708 — train — INFO — SpamClassifier is ready
+2022-10-21 16:48:45,809 — train — INFO — Z:\# MIPT\MLE\mle_1_homework\experiments\model.sav is saved
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.121s
+
+OK
+``
+
+``
+(mle) Z:\# MIPT\MLE\mle_1_homework>python src\unit_tests\test_predict.py -v
+test_predict (__main__.TestPredict) ... 2022-10-21 16:51:53,399 — predict — INFO — Predictor is ready
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.013s
+
+OK
+``
