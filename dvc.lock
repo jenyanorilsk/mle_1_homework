@@ -1,0 +1,30 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/spam.csv
+      md5: 181f52dfcd50655bc379b8f7c41df904
+      size: 503663
+    - path: src/preprocess.py
+      md5: 751d6e1336a6c183d74b7a42d23e1e3b
+      size: 3912
+    outs:
+    - path: data/spam_X.csv
+      md5: e4b9d345c1aea444c7c71290f418df29
+      size: 488542
+    - path: data/spam_y.csv
+      md5: 161815300ae316cf29263b6e1e3179fd
+      size: 55369
+    - path: data/test/spam_X.csv
+      md5: 3720a2635805f35bcb1d708c7a9a96ce
+      size: 98409
+    - path: data/test/spam_y.csv
+      md5: 08b17b6880e3f8e15bdd8447c204cde6
+      size: 10202
+    - path: data/train/spam_X.csv
+      md5: 6f35442471be68de43c591c2ff53c246
+      size: 389030
+    - path: data/train/spam_y.csv
+      md5: e3dbf93b550af4426fca1bc1257e199b
+      size: 44069

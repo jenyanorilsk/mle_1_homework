@@ -1,0 +1,4 @@
+[core]
+    remote = local
+['remote "local"']
+    url = 'z:\# MIPT\MLE\mle_1_homework'
