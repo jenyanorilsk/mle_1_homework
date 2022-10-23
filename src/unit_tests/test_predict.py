@@ -18,7 +18,7 @@ class TestPredict(unittest.TestCase):
         self.model = Predictor()
 
     def test_predict(self):
-        self.assertEqual(len(self.model.predict(['sample text message', 'this is not a spam'])), 2)
+        self.assertEqual(len(self.model.predict_spam(['sample text message', 'this is not a spam'])), 2)
 
 
 if __name__ == "__main__":
