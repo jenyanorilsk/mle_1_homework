@@ -1,20 +1,32 @@
 pipeline {
-    agent any 
+    agent any
+
+    environment {
+        DOCKERHUB_CREDS=credentials('mle-lab')
+        LC_ALL = "en_US.UTF-8"
+        LANG    = "en_US.UTF-8"
+        LANGUAGE = "en_US.UTF-8"
+    }
+
+    options {
+        timestamps()
+        skipDefaultCheckout(true)
+	}
+
     stages {
-        stage('Build') { 
+
+        stage('Clone github repository') {
             steps {
-                // 
+                cleanWs()
+                bat 'chcp 65001 && git clone -b main https://github.com/jenyanorilsk/mle_1_homework.git'
             }
         }
-        stage('Test') { 
+
+        stage('Checkout repo dir') {
             steps {
-                // 
+                bat 'chcp 65001 && cd mle_1_homework && dir'
             }
         }
-        stage('Deploy') { 
-            steps {
-                // 
-            }
-        }
+
     }
 }
