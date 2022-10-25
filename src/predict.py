@@ -120,7 +120,7 @@ class Predictor():
         
         return True
     
-    def predict(self, text: list) -> list:
+    def predict_spam(self, text: list) -> list:
         return self.classifier.predict(text)
 
 

@@ -116,3 +116,52 @@ Ran 1 test in 0.016s
 
 OK
 ```
+
+### Docker
+
+Результат сборки образа в консоли:
+
+```
+Z:\# MIPT\MLE\mle_1_homework>docker-compose build
+[+] Building 113.5s (9/9) FINISHED
+ => [internal] load build definition from Dockerfile
+ => => transferring dockerfile: 152B
+ => [internal] load .dockerignore
+ => => transferring context: 2B
+ => [internal] load metadata for docker.io/library/python:3.8-slim
+ => [1/4] FROM docker.io/library/python:3.8-slim
+ => [internal] load build context
+ => => transferring context: 5.13MB
+ => CACHED [2/4] WORKDIR /app
+ => => exporting layers
+ => => writing image sha256:d340d0e7d562ca5a31b4a59a715409aa9f43f5eebddc0b190f563f63109a6570
+ => => naming to docker.io/jenyanorilsk/mle_lab:latest
+
+ Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+```
+
+Попытка запушить образ в докерхаб:
+
+```
+Z:\# MIPT\MLE\mle_1_homework>docker login
+Authenticating with existing credentials...
+Login Succeeded
+
+Logging in with your password grants your terminal complete access to your account.
+For better security, log in with a limited-privilege personal access token. Learn more at https://docs.docker.com/go/access-tokens/
+
+Z:\# MIPT\MLE\mle_1_homework>docker push jenyanorilsk/mle_lab
+Using default tag: latest
+The push refers to repository [docker.io/jenyanorilsk/mle_lab]
+ca5c83166276: Pushed
+95a5b306034e: Pushed
+0048ef11e61d: Pushed
+4531003f44fb: Pushed
+2a5f58dab527: Pushed
+e4adf276765a: Pushed
+4cd6d007fbd6: Pushed
+608f3a074261: Pushed
+latest: digest: sha256:49bb83ab0f25761f5e76941df115bc52a5ba531b17b167369ab3a7bbbbb73404 size: 2001
+```
+
+После этого образ появляется на сайте, что можно проверить, пройдя [по ссылке](https://hub.docker.com/repository/docker/jenyanorilsk/mle_lab)
