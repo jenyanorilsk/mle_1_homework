@@ -38,6 +38,14 @@ pipeline {
         //    }
         //}
 
+        stage('Login'){
+            steps {
+                bat encoding: 'UTF-8', script: '''
+                            chcp 65001
+                            winpty docker login -u %DOCKERHUB_CREDS_USR% -p %DOCKERHUB_CREDS_PSW%'''
+            }
+        }
+
         //stage('debug-creds-output'){
         //    steps {
         //        bat encoding: 'CP1251', script: '''
