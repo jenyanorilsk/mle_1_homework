@@ -41,54 +41,54 @@ pipeline {
         //    }
         //}
 
-        /*
-        stage('Create and run docker container') {
-            steps {
-                script {
-                    try {
-                        bat 'chcp 65001 && cd mle_1_homework && docker-compose build'
-                    }
-                    finally {
-                        bat '''
-                            chcp 65001
-                            cd mle_1_homework
-                            docker-compose up -d
-                            '''
-                    }
-                }
-            }
-        }
+        
+        //stage('Create and run docker container') {
+        //    steps {
+        //        script {
+        //            try {
+        //                bat 'chcp 65001 && cd mle_1_homework && docker-compose build'
+        //            }
+        //            finally {
+        //                bat '''
+        //                    chcp 65001
+        //                    cd mle_1_homework
+        //                    docker-compose up -d
+        //                    '''
+        //            }
+        //        }
+        //    }
+        //}
 
-        stage('Checkout container logs') {
-            steps {
+        //stage('Checkout container logs') {
+        //    steps {
 
-                bat '''echo "DEBUG PROCESSES:" && docker ps'''
+        //        bat '''echo "DEBUG PROCESSES:" && docker ps'''
 
-                dir("mle_1_homework") {
-                        bat '''
-                            docker-compose up -d
-                            for /f %%i in ('docker ps -qf "name=^mle_1_homework_web_1"') do set containerId=%%i
-                            echo %containerId%
-                            IF "%containerId%" == "" (
-                                echo "No container running"
-                            )
-                            ELSE (
-                                docker logs --tail 1000 -f %containerId%
-                                )
-                        '''
-                    }
-            }
-        }
+        //        dir("mle_1_homework") {
+        //                bat '''
+        //                    docker-compose up -d
+        //                    for /f %%i in ('docker ps -qf "name=^mle_1_homework_web_1"') do set containerId=%%i
+        //                    echo %containerId%
+        //                    IF "%containerId%" == "" (
+        //                        echo "No container running"
+        //                    )
+        //                    ELSE (
+        //                        docker logs --tail 1000 -f %containerId%
+        //                        )
+        //                '''
+        //            }
+        //    }
+        //}
 
-        stage('Checkout coverage report'){
-            steps{
-                dir("mle_1_homework"){
-                    bat '''
-                    docker-compose logs -t --tail 10
-                    '''
-                }
-            }
-        }
+        //stage('Checkout coverage report'){
+        //    steps{
+        //        dir("mle_1_homework"){
+        //            bat '''
+        //            docker-compose logs -t --tail 10
+        //            '''
+        //        }
+        //    }
+        //}
 
         //stage('Push'){
         //    steps{
@@ -103,5 +103,5 @@ pipeline {
             bat 'chcp 65001 && docker logout'
         }
     }
-    */
+
 }
