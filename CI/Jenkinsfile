@@ -34,11 +34,11 @@ pipeline {
         //    }
         //}
 
-        stage('debug-creds-output'){
-            steps {
-                bat 'chcp 65001 && echo %DOCKERHUB_CREDS_USR% && echo %DOCKERHUB_CREDS_PSW%'
-            }
-        }
+        //stage('debug-creds-output'){
+        //    steps {
+        //        bat 'chcp 65001 && echo %DOCKERHUB_CREDS_USR% && echo %DOCKERHUB_CREDS_PSW%'
+        //    }
+        //}
 
         stage('Create and run docker container') {
             steps {
