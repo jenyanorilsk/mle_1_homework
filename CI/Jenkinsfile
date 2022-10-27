@@ -18,14 +18,16 @@ pipeline {
         stage('Clone github repository') {
             steps {
                 cleanWs()
-                bat 'chcp 65001 && git clone -b main https://github.com/jenyanorilsk/mle_1_homework.git'
+                bat encoding: 'UTF-8', script: '''
+                    chcp 65001
+                    git clone -b main https://github.com/jenyanorilsk/mle_1_homework.git'''
             }
         }
 
         stage('Checkout repo dir') {
             steps {
-                bat encoding: 'CP1251', script: '''
-                                                chcp 1251
+                bat encoding: 'UTF-8', script: '''
+                                                chcp 65001
                                                 cd mle_1_homework && dir'''
             }
         }
@@ -49,13 +51,13 @@ pipeline {
             steps {
                 script {
                     try {
-                        bat encoding: 'CP1251', script: '''
-                            chcp 1251
+                        bat encoding: 'UTF-8', script: '''
+                            chcp 65001
                             cd mle_1_homework && docker-compose build'''
                     }
                     finally {
-                        bat encoding: 'CP1251', script: '''
-                            chcp 1251
+                        bat encoding: 'UTF-8', script: '''
+                            chcp 65001
                             cd mle_1_homework
                             docker-compose up -d
                             '''
@@ -70,8 +72,8 @@ pipeline {
         //        bat '''echo "DEBUG PROCESSES:" && docker ps'''
 
                 dir("mle_1_homework") {
-                        bat encoding: 'CP1251', script: '''
-                            chcp 1251
+                        bat encoding: 'UTF-8', script: '''
+                            chcp 65001
                             docker-compose up -d
                             for /f %%i in ('docker ps -qf "name=^mle_1_homework_web_1"') do set containerId=%%i
                             echo %containerId%
@@ -89,9 +91,9 @@ pipeline {
         stage('Checkout coverage report'){
             steps{
                 dir("mle_1_homework"){
-                    bat encoding: 'CP1251', script: '''
-                    chcp 1251
-                    docker-compose logs -t --tail 10
+                    bat encoding: 'UTF-8', script: '''
+                        chcp 65001
+                        docker-compose logs -t --tail 10
                     '''
                 }
             }
@@ -108,8 +110,8 @@ pipeline {
     post {
         always {
             //bat 'chcp 65001 && docker logout'
-            bat encoding: 'CP1251', script: '''
-                    chcp 1251
+            bat encoding: 'UTF-8', script: '''
+                    chcp 65001
                     docker logout
                     '''
         }
