@@ -65,7 +65,7 @@ pipeline {
                 dir("mle_1_homework") {
                         bat '''
                             docker-compose up -d
-                            for /f %%i in ('docker ps -qf "name=^mle_lab-1"') do set containerId=%%i
+                            for /f %%i in ('docker ps -qf "name=^mle_1_homework_web_1"') do set containerId=%%i
                             echo %containerId%
                             IF "%containerId%" == "" (
                                 echo "No container running"
