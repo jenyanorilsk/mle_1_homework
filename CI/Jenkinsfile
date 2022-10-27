@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        //DOCKERHUB_CREDS=credentials('mle-lab')
+        DOCKERHUB_CREDS = credentials('mle-lab-docker')
         LC_ALL = "en_US.UTF-8"
         LANG    = "en_US.UTF-8"
         LANGUAGE = "en_US.UTF-8"
@@ -30,7 +30,7 @@ pipeline {
 
         stage('Login'){
             steps {
-                bat 'chcp 65001 && docker login -u %DOCKERHUB_CREDS_USR% -p %DOCKERHUB_CREDS_PSW%'
+                bat 'chcp 65001 && winpty docker login -u %DOCKERHUB_CREDS_USR% -p %DOCKERHUB_CREDS_PSW%'
             }
         }
 
