@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDS = credentials('mle-lab-docker')
-        LC_ALL = "en_US.UTF-8"
-        LANG    = "en_US.UTF-8"
-        LANGUAGE = "en_US.UTF-8"
+        LC_ALL = "ru_RU.UTF-8"
+        LANG    = "ru_RU.UTF-8"
+        LANGUAGE = "ru_RU.UTF-8"
     }
 
     options {
@@ -24,8 +24,7 @@ pipeline {
 
         stage('Checkout repo dir') {
             steps {
-                //bat encoding: 'UTF-8', script: 'cd mle_1_homework && dir'
-                bat encoding: 'ANSI', script: 'cd mle_1_homework && dir'
+                bat encoding: 'UTF-8', script: 'cd mle_1_homework && dir'
             }
         }
 
