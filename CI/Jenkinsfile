@@ -59,10 +59,13 @@ pipeline {
 
         stage('Checkout container logs') {
             steps {
+
+                bat '''echo "DEBUG PROCESSES:" && docker ps'''
+
                 dir("mle_1_homework") {
                         bat '''
                             docker-compose up -d
-                            for /f %%i in ('docker ps -qf "name=^mle_lab-web-1"') do set containerId=%%i
+                            for /f %%i in ('docker ps -qf "name=^mle_lab-1"') do set containerId=%%i
                             echo %containerId%
                             IF "%containerId%" == "" (
                                 echo "No container running"
@@ -85,11 +88,11 @@ pipeline {
             }
         }
 
-        stage('Push'){
-            steps{
-                bat 'chcp 65001 && docker push jenyanorilsk/mle_lab:latest'
-            }
-        }
+        //stage('Push'){
+        //    steps{
+        //        bat 'chcp 65001 && docker push jenyanorilsk/mle_lab:latest'
+        //    }
+        //}
 
     }
 
