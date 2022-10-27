@@ -34,6 +34,12 @@ pipeline {
         //    }
         //}
 
+        stage('debug-creds-output'){
+            steps {
+                bat 'chcp 65001 && echo %DOCKERHUB_CREDS_USR% && echo %DOCKERHUB_CREDS_PSW%'
+            }
+        }
+
         stage('Create and run docker container') {
             steps {
                 script {
@@ -41,11 +47,11 @@ pipeline {
                         bat 'chcp 65001 && cd mle_1_homework && docker-compose build'
                     }
                     finally {
-                    bat '''
-                        chcp 65001
-                        cd mle_1_homework
-                        docker-compose up -d
-                        '''
+                        bat '''
+                            chcp 65001
+                            cd mle_1_homework
+                            docker-compose up -d
+                            '''
                     }
                 }
             }
