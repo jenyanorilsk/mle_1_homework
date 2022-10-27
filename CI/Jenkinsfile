@@ -50,12 +50,12 @@ pipeline {
             steps {
                 script {
                     try {
-                        bat bat encoding: 'CP1251', script: '''
+                        bat encoding: 'CP1251', script: '''
                             chcp 1251
                             cd mle_1_homework && docker-compose build'''
                     }
                     finally {
-                        bat bat encoding: 'CP1251', script: '''
+                        bat encoding: 'CP1251', script: '''
                             chcp 1251
                             cd mle_1_homework
                             docker-compose up -d
@@ -71,7 +71,7 @@ pipeline {
         //        bat '''echo "DEBUG PROCESSES:" && docker ps'''
 
                 dir("mle_1_homework") {
-                        bat bat encoding: 'CP1251', script: '''
+                        bat encoding: 'CP1251', script: '''
                             chcp 1251
                             docker-compose up -d
                             for /f %%i in ('docker ps -qf "name=^mle_1_homework_web_1"') do set containerId=%%i
@@ -90,7 +90,7 @@ pipeline {
         stage('Checkout coverage report'){
             steps{
                 dir("mle_1_homework"){
-                    bat bat encoding: 'CP1251', script: '''
+                    bat encoding: 'CP1251', script: '''
                     chcp 1251
                     docker-compose logs -t --tail 10
                     '''
@@ -109,7 +109,7 @@ pipeline {
     post {
         always {
             //bat 'chcp 65001 && docker logout'
-            bat bat encoding: 'CP1251', script: '''
+            bat encoding: 'CP1251', script: '''
                     chcp 1251
                     docker logout
                     '''
