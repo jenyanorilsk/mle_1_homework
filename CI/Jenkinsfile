@@ -114,11 +114,14 @@ pipeline {
             }
         }
 
-        //stage('Push'){
-        //    steps{
-        //        bat 'chcp 65001 && docker push jenyanorilsk/mle_lab:latest'
-        //    }
-        //}
+        stage('Push'){
+            steps{
+                //bat 'chcp 65001 && docker push jenyanorilsk/mle_lab:latest'
+                bat encoding: 'UTF-8', script: '''
+                    chcp 65001
+                    docker push jenyanorilsk/mle_lab:latest'''
+            }
+        }
 
     }
 
