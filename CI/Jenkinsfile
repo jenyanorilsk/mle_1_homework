@@ -30,7 +30,7 @@ pipeline {
 
         stage('Login'){
             steps {
-                bat 'chcp 65001 && winpty docker login -u %DOCKERHUB_CREDS_USR% -p %DOCKERHUB_CREDS_PSW%'
+                bat 'winpty docker login -u %DOCKERHUB_CREDS_USR% -p %DOCKERHUB_CREDS_PSW%'
             }
         }
 
