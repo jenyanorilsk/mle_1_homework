@@ -28,5 +28,68 @@ pipeline {
             }
         }
 
+        stage('Login'){
+            steps {
+                bat 'chcp 65001 && docker login -u %DOCKERHUB_CREDS_USR% -p %DOCKERHUB_CREDS_PSW%'
+            }
+        }
+
+        stage('Create and run docker container') {
+            steps {
+                script {
+                    try {
+                        bat 'chcp 65001 && cd mle_1_homework && docker-compose build'
+                    }
+                    finally {
+                    bat '''
+                        chcp 65001
+                        cd mle_1_homework
+                        docker-compose up -d
+                        '''
+                    }
+                }
+            }
+        }
+
+        stage('Checkout container logs') {
+            steps {
+                dir("mle_1_homework") {
+                        bat '''
+                            docker-compose up -d
+                            for /f %%i in ('docker ps -qf "name=^mle_lab-web-1"') do set containerId=%%i
+                            echo %containerId%
+                            IF "%containerId%" == "" (
+                                echo "No container running"
+                            )
+                            ELSE (
+                                docker logs --tail 1000 -f %containerId%
+                                )
+                        '''
+                    }
+            }
+        }
+
+        stage('Checkout coverage report'){
+            steps{
+                dir("mle_1_homework"){
+                    bat '''
+                    docker-compose logs -t --tail 10
+                    '''
+                }
+            }
+        }
+
+        stage('Push'){
+            steps{
+                bat 'chcp 65001 && docker push jenyanorilsk/mle_lab:latest'
+            }
+        }
+
+    }
+
+    post {
+        always {
+            bat 'chcp 65001 && docker logout'
+        }
     }
 }
