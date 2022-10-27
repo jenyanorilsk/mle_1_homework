@@ -24,7 +24,7 @@ pipeline {
 
         stage('Checkout repo dir') {
             steps {
-                bat encoding: 'UTF-8', script: 'chcp 65001 && cd mle_1_homework && dir'
+                bat encoding: 'UTF-8', script: 'cd mle_1_homework && dir'
             }
         }
 
