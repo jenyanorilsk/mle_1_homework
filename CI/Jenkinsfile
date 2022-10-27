@@ -27,6 +27,7 @@ pipeline {
                 bat script: 'cd mle_1_homework && dir'
                 bat encoding: 'CP1252', script: 'cd mle_1_homework && dir'
                 bat encoding: 'CP1251', script: 'cd mle_1_homework && dir'
+                bat encoding: 'CP1251', script: 'chcp 1251 && cd mle_1_homework && dir'
                 bat encoding: 'UTF-8', script: 'cd mle_1_homework && dir'
                 bat encoding: 'UTF-8', script: 'chcp 65001 && cd mle_1_homework && dir'
                 bat encoding: 'UTF-8', script: 'chcp 1251 && cd mle_1_homework && dir'
