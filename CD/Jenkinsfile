@@ -41,6 +41,17 @@ pipeline {
                                                 '''
             }
         }
+
+        stage('Checkout log'){
+            steps{
+                dir("mle_1_homework"){
+                    bat encoding: 'UTF-8', script: '''
+                        chcp 65001
+                        docker-compose logs -t --tail 10
+                    '''
+                }
+            }
+        }
 	}
 
     post {
