@@ -42,27 +42,6 @@ pipeline {
             }
         }
 
-        stage('Checkout container logs') {
-            steps {
-
-                bat '''echo "DEBUG PROCESSES:" && docker ps'''
-
-                dir("mle_1_homework") {
-                        bat encoding: 'UTF-8', script: '''
-                            chcp 65001
-                            docker-compose up -d
-                            for /f %%i in ('docker ps -qf "name=^mle_1_homework_web_1"') do set containerId=%%i
-                            echo %containerId%
-                            IF "%containerId%" == "" (
-                                echo "No container running"
-                            )
-                            ELSE (
-                                docker logs --tail 1000 -f %containerId%
-                                )
-                        '''
-                    }
-            }
-        }
 	}
 
     post {
