@@ -1,0 +1,76 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKERHUB_CREDS = credentials('mle-lab-docker')
+        LC_ALL = "ru_RU.UTF-8"
+        LANG    = "ru_RU.UTF-8"
+        LANGUAGE = "ru_RU.UTF-8"
+    }
+
+    options {
+        timestamps()
+        skipDefaultCheckout(true)
+	}
+
+    stages {
+
+        stage('Login'){
+            steps {
+                bat encoding: 'UTF-8', script: '''
+                                                chcp 65001
+                                                docker login -u %DOCKERHUB_CREDS_USR% -p %DOCKERHUB_CREDS_PSW%
+                                                '''
+            }
+        }
+
+        stage('Pull image'){
+            steps{
+                bat encoding: 'UTF-8', script: '''
+                                                chcp 65001
+                                                docker pull jenyanorilsk/mle_lab:latest
+                                                '''
+            }
+        }
+
+        stage('Run container'){
+            steps{
+                bat encoding: 'UTF-8', script: '''
+                                                chcp 65001
+                                                docker run --name mle_lab -p 80:5556 -d jenyanorilsk/mle_lab:latest
+                                                '''
+            }
+        }
+
+        stage('Checkout container logs') {
+            steps {
+
+                bat '''echo "DEBUG PROCESSES:" && docker ps'''
+
+                dir("mle_1_homework") {
+                        bat encoding: 'UTF-8', script: '''
+                            chcp 65001
+                            docker-compose up -d
+                            for /f %%i in ('docker ps -qf "name=^mle_1_homework_web_1"') do set containerId=%%i
+                            echo %containerId%
+                            IF "%containerId%" == "" (
+                                echo "No container running"
+                            )
+                            ELSE (
+                                docker logs --tail 1000 -f %containerId%
+                                )
+                        '''
+                    }
+            }
+        }
+	}
+
+    post {
+        always {
+            bat encoding: 'UTF-8', script: '''
+                    chcp 65001
+                    docker stop mle_lab && docker logout
+                    '''
+        }
+    }
+}
