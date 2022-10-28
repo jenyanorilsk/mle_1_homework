@@ -1,0 +1,54 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKERHUB_CREDS = credentials('mle-lab-docker')
+        LC_ALL = "ru_RU.UTF-8"
+        LANG    = "ru_RU.UTF-8"
+        LANGUAGE = "ru_RU.UTF-8"
+    }
+
+    options {
+        timestamps()
+        skipDefaultCheckout(true)
+	}
+
+    stages {
+
+        stage('Login'){
+            steps {
+                bat encoding: 'UTF-8', script: '''
+                                                chcp 65001
+                                                docker login -u %DOCKERHUB_CREDS_USR% -p %DOCKERHUB_CREDS_PSW%
+                                                '''
+            }
+        }
+
+        stage('Pull image'){
+            steps{
+                bat encoding: 'UTF-8', script: '''
+                                                chcp 65001
+                                                docker pull jenyanorilsk/mle_lab:latest
+                                                '''
+            }
+        }
+
+        stage('Run container'){
+            steps{
+                bat encoding: 'UTF-8', script: '''
+                                                chcp 65001
+                                                docker run --name mle_lab -p 80:5556 -d jenyanorilsk/mle_lab:latest
+                                                '''
+            }
+        }
+	}
+
+    post {
+        always {
+            bat encoding: 'UTF-8', script: '''
+                    chcp 65001
+                    docker stop mle_lab && docker logout
+                    '''
+        }
+    }
+}
