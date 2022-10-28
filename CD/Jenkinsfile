@@ -45,7 +45,7 @@ pipeline {
         stage('Checkout container logs') {
             steps {
 
-        //        bat '''echo "DEBUG PROCESSES:" && docker ps'''
+                bat '''echo "DEBUG PROCESSES:" && docker ps'''
 
                 dir("mle_1_homework") {
                         bat encoding: 'UTF-8', script: '''
