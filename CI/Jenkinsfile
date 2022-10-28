@@ -32,12 +32,6 @@ pipeline {
             }
         }
 
-        //stage('Login'){
-        //    steps {
-        //        bat 'chcp 65001 && winpty docker login -u %DOCKERHUB_CREDS_USR% -p %DOCKERHUB_CREDS_PSW%'
-        //    }
-        //}
-
         stage('Login'){
             steps {
 
@@ -45,23 +39,9 @@ pipeline {
                     chcp 65001
                     docker login -u %DOCKERHUB_CREDS_USR% -p %DOCKERHUB_CREDS_PSW%
                     '''
-
-                //bat encoding: 'UTF-8', script: '''
-                //            chcp 65001
-                //            winpty docker login -u %DOCKERHUB_CREDS_USR% -p %DOCKERHUB_CREDS_PSW%'''
-                
             }
         }
-
-        //stage('debug-creds-output'){
-        //    steps {
-        //        bat encoding: 'CP1251', script: '''
-        //                                        chcp 1251
-        //                                        echo %DOCKERHUB_CREDS_USR% && echo %DOCKERHUB_CREDS_PSW%'''
-        //    }
-        //}
-
-        
+       
         stage('Create and run docker container') {
             steps {
                 script {
@@ -83,8 +63,6 @@ pipeline {
 
         stage('Checkout container logs') {
             steps {
-
-        //        bat '''echo "DEBUG PROCESSES:" && docker ps'''
 
                 dir("mle_1_homework") {
                         bat encoding: 'UTF-8', script: '''
@@ -116,7 +94,6 @@ pipeline {
 
         stage('Push'){
             steps{
-                //bat 'chcp 65001 && docker push jenyanorilsk/mle_lab:latest'
                 bat encoding: 'UTF-8', script: '''
                     chcp 65001
                     docker push jenyanorilsk/mle_lab:latest'''
@@ -127,7 +104,6 @@ pipeline {
 
     post {
         always {
-            //bat 'chcp 65001 && docker logout'
             bat encoding: 'UTF-8', script: '''
                     chcp 65001
                     docker logout
