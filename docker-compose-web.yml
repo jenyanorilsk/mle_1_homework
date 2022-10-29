@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+
+# В этом варианте мы используем готовый контейнер, в котором запускаем препроцессинг, обучение и фласк
+# Каждый запуск мы делаем это с нуля, что замедляет запуск контейнера, хоть и не в нашем случае
+
+   app:
+       image: jenyanorilsk/mle_lab:latest
+       command: bash -c "python src/preprocess.py && python src/train.py && flask run"
+       ports:
+           - 5000:5000
+       environment:
+        FLASK_APP: src/app.py
+        FLASK_RUN_HOST: 0.0.0.0
+
+# Если бы мы хотели ускорить старт, то можно выполнять препроцессинг и обучение при сборке контейнера
+# А в самом контейнере запускать только фласк
+
+#   app:
+#       build: 
+#         context: ./
+#         dockerfile: ./web/Dockerfile
+#       command: bash -c "flask run"
+#       ports:
+#           - 5000:5000
+#       environment:
+#        FLASK_APP: src/app.py
+#        FLASK_RUN_HOST: 0.0.0.0

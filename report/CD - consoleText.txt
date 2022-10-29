@@ -1,0 +1,80 @@
+Started by user admin
+Connecting to https://api.github.com using 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/******
+GitHub throttling is disabled, which is not allowed for public GitHub usage, so ThrottleOnOver will be used instead. To configure a different rate limiting strategy, go to "GitHub API usage" under "Configure System" in the Jenkins settings.
+Obtained CD/Jenkinsfile from 68a771bbca6335c40a10e47dd3ca589fe646bcdb
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_cd_develop
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of %DOCKERHUB_CREDS% or %DOCKERHUB_CREDS_PSW%
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Login)
+[Pipeline] bat
+[2022-10-29T18:14:43.762Z] 
+[2022-10-29T18:14:43.762Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_cd_develop>chcp 65001 
+[2022-10-29T18:14:43.762Z] Active code page: 65001
+[2022-10-29T18:14:43.762Z] 
+[2022-10-29T18:14:43.762Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_cd_develop>docker login -u jenyanorilsk -p **** 
+[2022-10-29T18:14:43.762Z] WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+[2022-10-29T18:14:46.303Z] Login Succeeded
+[2022-10-29T18:14:46.303Z] 
+[2022-10-29T18:14:46.303Z] Logging in with your password grants your terminal complete access to your account. 
+[2022-10-29T18:14:46.303Z] For better security, log in with a limited-privilege personal access token. Learn more at https://docs.docker.com/go/access-tokens/
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Pull image)
+[Pipeline] bat
+[2022-10-29T18:14:46.673Z] 
+[2022-10-29T18:14:46.673Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_cd_develop>chcp 65001 
+[2022-10-29T18:14:46.673Z] Active code page: 65001
+[2022-10-29T18:14:46.673Z] 
+[2022-10-29T18:14:46.673Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_cd_develop>docker pull jenyanorilsk/mle_lab:latest 
+[2022-10-29T18:14:50.860Z] latest: Pulling from jenyanorilsk/mle_lab
+[2022-10-29T18:14:50.860Z] Digest: sha256:25801fb8d357e848d6cbbc2875473801656303d2c19b52d72208bf32d07e16df
+[2022-10-29T18:14:50.860Z] Status: Image is up to date for jenyanorilsk/mle_lab:latest
+[2022-10-29T18:14:50.860Z] docker.io/jenyanorilsk/mle_lab:latest
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run container)
+[Pipeline] bat
+[2022-10-29T18:14:51.200Z] 
+[2022-10-29T18:14:51.200Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_cd_develop>chcp 65001 
+[2022-10-29T18:14:51.200Z] Active code page: 65001
+[2022-10-29T18:14:51.200Z] 
+[2022-10-29T18:14:51.200Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_cd_develop>docker run --name mle_lab -p 80:5556 -d jenyanorilsk/mle_lab:latest 
+[2022-10-29T18:14:51.200Z] 68e90c0a70a8366358fdfb44d7d16ce37f42bada0491438c9cd72a1771a452f6
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] bat
+[2022-10-29T18:14:52.108Z] 
+[2022-10-29T18:14:52.108Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_cd_develop>chcp 65001 
+[2022-10-29T18:14:52.108Z] Active code page: 65001
+[2022-10-29T18:14:52.108Z] 
+[2022-10-29T18:14:52.108Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_cd_develop>docker stop mle_lab   && docker logout 
+[2022-10-29T18:14:52.370Z] mle_lab
+[2022-10-29T18:14:52.370Z] Removing login credentials for https://index.docker.io/v1/
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+
+GitHub has been notified of this commit’s build result
+
+Finished: SUCCESS
