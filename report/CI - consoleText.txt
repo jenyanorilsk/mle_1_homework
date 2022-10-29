@@ -1,0 +1,638 @@
+Started by user admin
+Connecting to https://api.github.com using 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/******
+GitHub throttling is disabled, which is not allowed for public GitHub usage, so ThrottleOnOver will be used instead. To configure a different rate limiting strategy, go to "GitHub API usage" under "Configure System" in the Jenkins settings.
+Obtained CI/Jenkinsfile from 68a771bbca6335c40a10e47dd3ca589fe646bcdb
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of %DOCKERHUB_CREDS% or %DOCKERHUB_CREDS_PSW%
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Clone github repository)
+[Pipeline] cleanWs
+[2022-10-29T17:33:24.831Z] [WS-CLEANUP] Deleting project workspace...
+[2022-10-29T17:33:24.831Z] [WS-CLEANUP] Deferred wipeout is used...
+[2022-10-29T17:33:24.835Z] [WS-CLEANUP] done
+[Pipeline] bat
+[2022-10-29T17:33:25.120Z] 
+[2022-10-29T17:33:25.120Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop>chcp 65001 
+[2022-10-29T17:33:25.120Z] Active code page: 65001
+[2022-10-29T17:33:25.120Z] 
+[2022-10-29T17:33:25.120Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop>git clone -b main https://github.com/jenyanorilsk/mle_1_homework.git 
+[2022-10-29T17:33:25.120Z] Cloning into 'mle_1_homework'...
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Checkout repo dir)
+[Pipeline] bat
+[2022-10-29T17:33:27.363Z] 
+[2022-10-29T17:33:27.363Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop>chcp 65001 
+[2022-10-29T17:33:27.363Z] Active code page: 65001
+[2022-10-29T17:33:27.363Z] 
+[2022-10-29T17:33:27.363Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop>cd mle_1_homework   && dir
+[2022-10-29T17:33:27.363Z]  Volume in drive C has no label.
+[2022-10-29T17:33:27.363Z]  Volume Serial Number is 24F9-3E20
+[2022-10-29T17:33:27.363Z] 
+[2022-10-29T17:33:27.363Z]  Directory of C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop\mle_1_homework
+[2022-10-29T17:33:27.363Z] 
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33    <DIR>          .
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33    <DIR>          ..
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33    <DIR>          .dvc
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33               142 .dvcignore
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33             1 971 .gitignore
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33    <DIR>          CD
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33    <DIR>          CI
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33               450 config.ini
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33    <DIR>          data
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33               411 docker-compose.yml
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33               115 Dockerfile
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33               864 dvc.lock
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33               287 dvc.yaml
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33    <DIR>          experiments
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33    <DIR>          notebooks
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33            10 715 README.md
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33                89 requirements.txt
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33    <DIR>          src
+[2022-10-29T17:33:27.363Z] 30.10.2022  00:33    <DIR>          tests
+[2022-10-29T17:33:27.363Z]                9 File(s)         15 044 bytes
+[2022-10-29T17:33:27.363Z]               10 Dir(s)  36 318 973 952 bytes free
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Login)
+[Pipeline] bat
+[2022-10-29T17:33:27.721Z] 
+[2022-10-29T17:33:27.721Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop>chcp 65001 
+[2022-10-29T17:33:27.721Z] Active code page: 65001
+[2022-10-29T17:33:27.721Z] 
+[2022-10-29T17:33:27.721Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop>docker login -u jenyanorilsk -p **** 
+[2022-10-29T17:33:27.721Z] WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+[2022-10-29T17:33:30.271Z] Login Succeeded
+[2022-10-29T17:33:30.271Z] 
+[2022-10-29T17:33:30.271Z] Logging in with your password grants your terminal complete access to your account. 
+[2022-10-29T17:33:30.271Z] For better security, log in with a limited-privilege personal access token. Learn more at https://docs.docker.com/go/access-tokens/
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Create and run docker container)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] bat
+[2022-10-29T17:33:30.657Z] 
+[2022-10-29T17:33:30.657Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop>chcp 65001 
+[2022-10-29T17:33:30.657Z] Active code page: 65001
+[2022-10-29T17:33:30.657Z] 
+[2022-10-29T17:33:30.657Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop>cd mle_1_homework   && docker-compose build 
+[2022-10-29T17:33:31.595Z] Building web
+[2022-10-29T17:33:31.860Z] #1 [internal] load build definition from Dockerfile
+[2022-10-29T17:33:31.860Z] #1 sha256:1836f0687551dcbc9e5fdd434bcc838ec2e990f003b800e3827b639bc8694be5
+[2022-10-29T17:33:31.860Z] #1 transferring dockerfile: 152B done
+[2022-10-29T17:33:31.860Z] #1 DONE 0.0s
+[2022-10-29T17:33:31.860Z] 
+[2022-10-29T17:33:31.860Z] #2 [internal] load .dockerignore
+[2022-10-29T17:33:31.860Z] #2 sha256:4e35829cc87189e94a908abafdff90744ce38edcdf45d849c9371aa66809190b
+[2022-10-29T17:33:31.860Z] #2 transferring context: 2B done
+[2022-10-29T17:33:31.860Z] #2 DONE 0.0s
+[2022-10-29T17:33:31.860Z] 
+[2022-10-29T17:33:31.860Z] #3 [internal] load metadata for docker.io/library/python:3.8-slim
+[2022-10-29T17:33:31.860Z] #3 sha256:a94c831f6b826f8ffd4325edd7e9f6408caa85fd7f03e2b107cc6a9d249f7065
+[2022-10-29T17:33:31.860Z] #3 DONE 0.0s
+[2022-10-29T17:33:31.860Z] 
+[2022-10-29T17:33:31.860Z] #4 [1/4] FROM docker.io/library/python:3.8-slim
+[2022-10-29T17:33:31.860Z] #4 sha256:1fbbe97877147903fbc9803ff97bc3b83d9209c6b719a68eb4b800b5a9e4b050
+[2022-10-29T17:33:31.860Z] #4 DONE 0.0s
+[2022-10-29T17:33:31.860Z] 
+[2022-10-29T17:33:31.860Z] #6 [internal] load build context
+[2022-10-29T17:33:31.860Z] #6 sha256:f6a96df6a9ef8ef0617ace87a02f02e995909f86945820e11595c692b6c9cae4
+[2022-10-29T17:33:31.860Z] #6 transferring context: 1.54MB 0.1s done
+[2022-10-29T17:33:31.860Z] #6 DONE 0.1s
+[2022-10-29T17:33:31.860Z] 
+[2022-10-29T17:33:31.860Z] #5 [2/4] WORKDIR /app
+[2022-10-29T17:33:31.860Z] #5 sha256:71a4724b6cad5749f628497549a073c3b1ac91e7489875f39a922673854fc6ed
+[2022-10-29T17:33:31.860Z] #5 CACHED
+[2022-10-29T17:33:31.860Z] 
+[2022-10-29T17:33:31.860Z] #7 [3/4] ADD . /app
+[2022-10-29T17:33:31.860Z] #7 sha256:f8d35bda3ce5aa53330273bb43065ef41e4b65ae54cac0f8ba4c8393f5037808
+[2022-10-29T17:33:31.860Z] #7 DONE 0.0s
+[2022-10-29T17:33:31.860Z] 
+[2022-10-29T17:33:31.860Z] #8 [4/4] RUN pip install -r requirements.txt
+[2022-10-29T17:33:31.860Z] #8 sha256:acf39f950e2f473a3726ecefae87c6ec78f2f77d5f00e46b73477aa1110e2e84
+[2022-10-29T17:33:36.055Z] #8 3.370 Collecting coverage==6.5.0
+[2022-10-29T17:33:36.055Z] #8 3.906   Downloading coverage-6.5.0-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (214 kB)
+[2022-10-29T17:33:36.055Z] #8 4.154      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 214.4/214.4 KB 864.8 kB/s eta 0:00:00
+[2022-10-29T17:33:36.616Z] #8 4.525 Collecting dvc==2.30.0
+[2022-10-29T17:33:36.616Z] #8 4.636   Downloading dvc-2.30.0-py3-none-any.whl (382 kB)
+[2022-10-29T17:33:36.616Z] #8 4.767      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 382.1/382.1 KB 2.9 MB/s eta 0:00:00
+[2022-10-29T17:33:37.555Z] #8 5.476 Collecting numpy==1.23.3
+[2022-10-29T17:33:37.555Z] #8 5.585   Downloading numpy-1.23.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.1 MB)
+[2022-10-29T17:33:45.673Z] #8 12.90      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.1/17.1 MB 2.2 MB/s eta 0:00:00
+[2022-10-29T17:33:45.673Z] #8 13.33 Collecting pandas==1.5.0
+[2022-10-29T17:33:45.673Z] #8 13.44   Downloading pandas-1.5.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.2 MB)
+[2022-10-29T17:33:50.933Z] #8 18.72      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.2/12.2 MB 2.3 MB/s eta 0:00:00
+[2022-10-29T17:33:50.933Z] #8 18.95 Collecting pyyaml
+[2022-10-29T17:33:50.933Z] #8 19.06   Downloading PyYAML-6.0-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (701 kB)
+[2022-10-29T17:33:51.460Z] #8 19.35      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 701.2/701.2 KB 2.5 MB/s eta 0:00:00
+[2022-10-29T17:33:51.460Z] #8 19.47 Collecting sklearn
+[2022-10-29T17:33:51.460Z] #8 19.58   Downloading sklearn-0.0.tar.gz (1.1 kB)
+[2022-10-29T17:33:51.724Z] #8 19.58   Preparing metadata (setup.py): started
+[2022-10-29T17:33:51.989Z] #8 19.94   Preparing metadata (setup.py): finished with status 'done'
+[2022-10-29T17:33:51.989Z] #8 20.09 Collecting flask==2.2.2
+[2022-10-29T17:33:51.989Z] #8 20.20   Downloading Flask-2.2.2-py3-none-any.whl (101 kB)
+[2022-10-29T17:33:52.240Z] #8 20.24      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 101.5/101.5 KB 2.7 MB/s eta 0:00:00
+[2022-10-29T17:33:52.503Z] #8 20.55 Collecting pydot>=1.2.4
+[2022-10-29T17:33:52.503Z] #8 20.65   Downloading pydot-1.4.2-py2.py3-none-any.whl (21 kB)
+[2022-10-29T17:33:52.767Z] #8 20.83 Collecting tomlkit>=0.11.1
+[2022-10-29T17:33:52.767Z] #8 20.93   Downloading tomlkit-0.11.6-py3-none-any.whl (35 kB)
+[2022-10-29T17:33:53.032Z] #8 21.08 Collecting tabulate>=0.8.7
+[2022-10-29T17:33:53.032Z] #8 21.18   Downloading tabulate-0.9.0-py3-none-any.whl (35 kB)
+[2022-10-29T17:33:53.296Z] #8 21.32 Collecting appdirs>=1.4.3
+[2022-10-29T17:33:53.296Z] #8 21.43   Downloading appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)
+[2022-10-29T17:33:53.547Z] #8 21.71 Collecting dvc-data==0.17.1
+[2022-10-29T17:33:53.809Z] #8 21.83   Downloading dvc_data-0.17.1-py3-none-any.whl (50 kB)
+[2022-10-29T17:33:53.809Z] #8 21.85      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.9/50.9 KB 2.1 MB/s eta 0:00:00
+[2022-10-29T17:33:54.076Z] #8 21.98 Collecting distro>=1.3.0
+[2022-10-29T17:33:54.076Z] #8 22.08   Downloading distro-1.8.0-py3-none-any.whl (20 kB)
+[2022-10-29T17:33:54.338Z] #8 22.31 Collecting dvc-render==0.0.12
+[2022-10-29T17:33:54.338Z] #8 22.42   Downloading dvc_render-0.0.12-py3-none-any.whl (18 kB)
+[2022-10-29T17:33:54.603Z] #8 22.65 Collecting shortuuid>=0.5.0
+[2022-10-29T17:33:54.603Z] #8 22.76   Downloading shortuuid-1.0.9-py3-none-any.whl (9.4 kB)
+[2022-10-29T17:33:54.866Z] #8 22.99 Collecting tqdm<5,>=4.63.1
+[2022-10-29T17:33:54.866Z] #8 23.10   Downloading tqdm-4.64.1-py2.py3-none-any.whl (78 kB)
+[2022-10-29T17:33:55.133Z] #8 23.13      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.5/78.5 KB 2.6 MB/s eta 0:00:00
+[2022-10-29T17:33:55.397Z] #8 23.46 Collecting psutil>=5.8.0
+[2022-10-29T17:33:55.661Z] #8 23.57   Downloading psutil-5.9.3-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (295 kB)
+[2022-10-29T17:33:55.661Z] #8 23.69      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 295.6/295.6 KB 2.4 MB/s eta 0:00:00
+[2022-10-29T17:33:55.924Z] #8 23.86 Collecting importlib-resources>=5.2.2
+[2022-10-29T17:33:55.924Z] #8 23.96   Downloading importlib_resources-5.10.0-py3-none-any.whl (34 kB)
+[2022-10-29T17:33:55.924Z] #8 24.10 Collecting zc.lockfile>=1.2.1
+[2022-10-29T17:33:56.188Z] #8 24.21   Downloading zc.lockfile-2.0-py2.py3-none-any.whl (9.7 kB)
+[2022-10-29T17:33:56.450Z] #8 24.45 Collecting rich>=10.13.0
+[2022-10-29T17:33:56.450Z] #8 24.56   Downloading rich-12.6.0-py3-none-any.whl (237 kB)
+[2022-10-29T17:33:56.450Z] #8 24.64      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 237.5/237.5 KB 2.9 MB/s eta 0:00:00
+[2022-10-29T17:33:56.714Z] #8 24.86 Collecting dpath<3,>=2.0.2
+[2022-10-29T17:33:56.976Z] #8 24.97   Downloading dpath-2.0.6-py3-none-any.whl (15 kB)
+[2022-10-29T17:33:56.976Z] #8 25.10 Collecting configobj>=5.0.6
+[2022-10-29T17:33:56.976Z] #8 25.21   Downloading configobj-5.0.6.tar.gz (33 kB)
+[2022-10-29T17:33:57.227Z] #8 25.23   Preparing metadata (setup.py): started
+[2022-10-29T17:33:57.490Z] #8 25.42   Preparing metadata (setup.py): finished with status 'done'
+[2022-10-29T17:33:57.490Z] #8 25.55 Collecting pathspec<0.10.0,>=0.9.0
+[2022-10-29T17:33:57.490Z] #8 25.66   Downloading pathspec-0.9.0-py2.py3-none-any.whl (31 kB)
+[2022-10-29T17:33:57.754Z] #8 25.85 Collecting pyparsing>=2.4.7
+[2022-10-29T17:33:57.754Z] #8 25.95   Downloading pyparsing-3.0.9-py3-none-any.whl (98 kB)
+[2022-10-29T17:33:58.019Z] #8 25.99      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 98.3/98.3 KB 2.8 MB/s eta 0:00:00
+[2022-10-29T17:33:58.019Z] #8 26.16 Collecting requests>=2.22.0
+[2022-10-29T17:33:58.280Z] #8 26.27   Downloading requests-2.28.1-py3-none-any.whl (62 kB)
+[2022-10-29T17:33:58.280Z] #8 26.29      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.8/62.8 KB 2.6 MB/s eta 0:00:00
+[2022-10-29T17:33:58.544Z] #8 26.52 Collecting dvc-http==2.27.2
+[2022-10-29T17:33:58.544Z] #8 26.62   Downloading dvc_http-2.27.2-py3-none-any.whl (11 kB)
+[2022-10-29T17:33:58.806Z] #8 26.77 Collecting colorama>=0.3.9
+[2022-10-29T17:33:58.806Z] #8 26.88   Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+[2022-10-29T17:33:58.806Z] #8 27.01 Collecting grandalf==0.6
+[2022-10-29T17:33:59.069Z] #8 27.12   Downloading grandalf-0.6-py3-none-any.whl (31 kB)
+[2022-10-29T17:33:59.069Z] #8 27.27 Collecting funcy>=1.14
+[2022-10-29T17:33:59.321Z] #8 27.38   Downloading funcy-1.17-py2.py3-none-any.whl (33 kB)
+[2022-10-29T17:33:59.584Z] #8 27.55 Collecting packaging>=19.0
+[2022-10-29T17:33:59.584Z] #8 27.66   Downloading packaging-21.3-py3-none-any.whl (40 kB)
+[2022-10-29T17:33:59.584Z] #8 27.68      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.8/40.8 KB 2.4 MB/s eta 0:00:00
+[2022-10-29T17:33:59.584Z] #8 27.81 Collecting flatten-dict<1,>=0.4.1
+[2022-10-29T17:33:59.846Z] #8 27.92   Downloading flatten_dict-0.4.2-py2.py3-none-any.whl (9.7 kB)
+[2022-10-29T17:34:00.110Z] #8 28.08 Collecting shtab<2,>=1.3.4
+[2022-10-29T17:34:00.110Z] #8 28.19   Downloading shtab-1.5.6-py2.py3-none-any.whl (13 kB)
+[2022-10-29T17:34:00.110Z] #8 28.33 Collecting voluptuous>=0.11.7
+[2022-10-29T17:34:00.373Z] #8 28.43   Downloading voluptuous-0.13.1-py3-none-any.whl (29 kB)
+[2022-10-29T17:34:00.636Z] #8 28.68 Collecting hydra-core>=1.1.0
+[2022-10-29T17:34:00.636Z] #8 28.79   Downloading hydra_core-1.2.0-py3-none-any.whl (151 kB)
+[2022-10-29T17:34:00.636Z] #8 28.85      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 151.1/151.1 KB 2.6 MB/s eta 0:00:00
+[2022-10-29T17:34:00.899Z] #8 29.06 Collecting iterative-telemetry==0.0.5
+[2022-10-29T17:34:01.162Z] #8 29.17   Downloading iterative_telemetry-0.0.5-py3-none-any.whl (9.3 kB)
+[2022-10-29T17:34:01.424Z] #8 29.41 Collecting scmrepo==0.1.1
+[2022-10-29T17:34:01.424Z] #8 29.52   Downloading scmrepo-0.1.1-py3-none-any.whl (47 kB)
+[2022-10-29T17:34:01.424Z] #8 29.54      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.7/47.7 KB 2.6 MB/s eta 0:00:00
+[2022-10-29T17:34:01.986Z] #8 30.16 Collecting ruamel.yaml>=0.17.11
+[2022-10-29T17:34:02.249Z] #8 30.27   Downloading ruamel.yaml-0.17.21-py3-none-any.whl (109 kB)
+[2022-10-29T17:34:02.249Z] #8 30.32      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 109.5/109.5 KB 2.7 MB/s eta 0:00:00
+[2022-10-29T17:34:02.512Z] #8 30.52 Collecting pygtrie>=2.3.2
+[2022-10-29T17:34:02.512Z] #8 30.64   Downloading pygtrie-2.5.0-py3-none-any.whl (25 kB)
+[2022-10-29T17:34:02.777Z] #8 30.90 Collecting dvclive>=0.10.0
+[2022-10-29T17:34:03.041Z] #8 31.01   Downloading dvclive-0.12.1-py3-none-any.whl (24 kB)
+[2022-10-29T17:34:03.041Z] #8 31.24 Collecting dvc-task==0.1.3
+[2022-10-29T17:34:03.306Z] #8 31.35   Downloading dvc_task-0.1.3-py3-none-any.whl (23 kB)
+[2022-10-29T17:34:03.568Z] #8 31.52 Collecting networkx>=2.5
+[2022-10-29T17:34:03.568Z] #8 31.63   Downloading networkx-2.8.7-py3-none-any.whl (2.0 MB)
+[2022-10-29T17:34:04.401Z] #8 32.39      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 2.6 MB/s eta 0:00:00
+[2022-10-29T17:34:04.401Z] #8 32.54 Collecting typing-extensions>=3.7.4
+[2022-10-29T17:34:04.401Z] #8 32.65   Downloading typing_extensions-4.4.0-py3-none-any.whl (26 kB)
+[2022-10-29T17:34:04.974Z] #8 32.87 Collecting flufl.lock>=5
+[2022-10-29T17:34:04.974Z] #8 32.98   Downloading flufl.lock-7.1.1-py3-none-any.whl (11 kB)
+[2022-10-29T17:34:04.974Z] #8 33.23 Collecting pytz>=2020.1
+[2022-10-29T17:34:05.236Z] #8 33.34   Downloading pytz-2022.5-py2.py3-none-any.whl (500 kB)
+[2022-10-29T17:34:05.500Z] #8 33.52      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 500.7/500.7 KB 2.7 MB/s eta 0:00:00
+[2022-10-29T17:34:05.761Z] #8 33.66 Collecting python-dateutil>=2.8.1
+[2022-10-29T17:34:05.761Z] #8 33.77   Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+[2022-10-29T17:34:05.761Z] #8 33.85      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 247.7/247.7 KB 3.1 MB/s eta 0:00:00
+[2022-10-29T17:34:06.023Z] #8 34.11 Collecting importlib-metadata>=3.6.0
+[2022-10-29T17:34:06.023Z] #8 34.22   Downloading importlib_metadata-5.0.0-py3-none-any.whl (21 kB)
+[2022-10-29T17:34:06.284Z] #8 34.35 Collecting itsdangerous>=2.0
+[2022-10-29T17:34:06.284Z] #8 34.46   Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+[2022-10-29T17:34:06.547Z] #8 34.61 Collecting click>=8.0
+[2022-10-29T17:34:06.547Z] #8 34.72   Downloading click-8.1.3-py3-none-any.whl (96 kB)
+[2022-10-29T17:34:06.809Z] #8 34.76      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.6/96.6 KB 2.5 MB/s eta 0:00:00
+[2022-10-29T17:34:06.809Z] #8 34.92 Collecting Werkzeug>=2.2.2
+[2022-10-29T17:34:07.072Z] #8 35.02   Downloading Werkzeug-2.2.2-py3-none-any.whl (232 kB)
+[2022-10-29T17:34:07.072Z] #8 35.10      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 232.7/232.7 KB 3.0 MB/s eta 0:00:00
+[2022-10-29T17:34:07.072Z] #8 35.25 Collecting Jinja2>=3.0
+[2022-10-29T17:34:07.337Z] #8 35.36   Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+[2022-10-29T17:34:07.337Z] #8 35.41      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 KB 2.6 MB/s eta 0:00:00
+[2022-10-29T17:34:07.603Z] #8 35.66 Collecting nanotime>=0.5.2
+[2022-10-29T17:34:07.603Z] #8 35.77   Downloading nanotime-0.5.2.tar.gz (3.2 kB)
+[2022-10-29T17:34:07.867Z] #8 35.78   Preparing metadata (setup.py): started
+[2022-10-29T17:34:07.867Z] #8 35.98   Preparing metadata (setup.py): finished with status 'done'
+[2022-10-29T17:34:08.130Z] #8 36.10 Collecting dictdiffer>=0.8.1
+[2022-10-29T17:34:08.130Z] #8 36.21   Downloading dictdiffer-0.9.0-py2.py3-none-any.whl (16 kB)
+[2022-10-29T17:34:08.130Z] #8 36.35 Collecting attrs>=21.3.0
+[2022-10-29T17:34:08.392Z] #8 36.46   Downloading attrs-22.1.0-py2.py3-none-any.whl (58 kB)
+[2022-10-29T17:34:08.392Z] #8 36.49      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.8/58.8 KB 2.3 MB/s eta 0:00:00
+[2022-10-29T17:34:08.658Z] #8 36.74 Collecting dvc-objects==0.7.0
+[2022-10-29T17:34:08.658Z] #8 36.85   Downloading dvc_objects-0.7.0-py3-none-any.whl (35 kB)
+[2022-10-29T17:34:08.922Z] #8 37.02 Collecting diskcache>=5.2.1
+[2022-10-29T17:34:08.922Z] #8 37.12   Downloading diskcache-5.4.0-py3-none-any.whl (44 kB)
+[2022-10-29T17:34:09.184Z] #8 37.14      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.0/45.0 KB 2.4 MB/s eta 0:00:00
+[2022-10-29T17:34:09.184Z] #8 37.31 Collecting aiohttp-retry>=2.5.0
+[2022-10-29T17:34:09.184Z] #8 37.42   Downloading aiohttp_retry-2.8.3-py3-none-any.whl (9.8 kB)
+[2022-10-29T17:34:09.449Z] #8 37.58 Collecting fsspec[http]
+[2022-10-29T17:34:09.449Z] #8 37.69   Downloading fsspec-2022.10.0-py3-none-any.whl (138 kB)
+[2022-10-29T17:34:09.700Z] #8 37.74      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 138.8/138.8 KB 2.8 MB/s eta 0:00:00
+[2022-10-29T17:34:09.962Z] #8 38.03 Collecting celery<6,>=5.2.0
+[2022-10-29T17:34:09.962Z] #8 38.14   Downloading celery-5.2.7-py3-none-any.whl (405 kB)
+[2022-10-29T17:34:10.225Z] #8 38.29      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 405.6/405.6 KB 2.7 MB/s eta 0:00:00
+[2022-10-29T17:34:10.487Z] #8 38.48 Collecting kombu<6,>=5.2.0
+[2022-10-29T17:34:10.487Z] #8 38.59   Downloading kombu-5.2.4-py3-none-any.whl (189 kB)
+[2022-10-29T17:34:10.487Z] #8 38.65      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 189.2/189.2 KB 3.2 MB/s eta 0:00:00
+[2022-10-29T17:34:10.749Z] #8 38.79 Collecting future
+[2022-10-29T17:34:10.749Z] #8 38.89   Downloading future-0.18.2.tar.gz (829 kB)
+[2022-10-29T17:34:11.263Z] #8 39.18      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 829.2/829.2 KB 2.9 MB/s eta 0:00:00
+[2022-10-29T17:34:11.263Z] #8 39.31   Preparing metadata (setup.py): started
+[2022-10-29T17:34:11.527Z] #8 39.56   Preparing metadata (setup.py): finished with status 'done'
+[2022-10-29T17:34:11.527Z] #8 39.73 Collecting filelock
+[2022-10-29T17:34:11.791Z] #8 39.85   Downloading filelock-3.8.0-py3-none-any.whl (10 kB)
+[2022-10-29T17:34:12.055Z] #8 40.07 Collecting gitpython>3
+[2022-10-29T17:34:12.055Z] #8 40.18   Downloading GitPython-3.1.29-py3-none-any.whl (182 kB)
+[2022-10-29T17:34:12.055Z] #8 40.24      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 182.5/182.5 KB 3.2 MB/s eta 0:00:00
+[2022-10-29T17:34:12.629Z] #8 40.59 Collecting pygit2>=1.10.0
+[2022-10-29T17:34:12.629Z] #8 40.71   Downloading pygit2-1.10.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.6 MB)
+[2022-10-29T17:34:14.543Z] #8 42.35      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.6/4.6 MB 2.8 MB/s eta 0:00:00
+[2022-10-29T17:34:14.543Z] #8 42.50 Collecting asyncssh<3,>=2.7.1
+[2022-10-29T17:34:14.543Z] #8 42.61   Downloading asyncssh-2.12.0-py3-none-any.whl (346 kB)
+[2022-10-29T17:34:14.807Z] #8 42.74      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 346.7/346.7 KB 2.8 MB/s eta 0:00:00
+[2022-10-29T17:34:14.807Z] #8 43.03 Collecting dulwich>=0.20.46
+[2022-10-29T17:34:15.071Z] #8 43.14   Downloading dulwich-0.20.46-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (499 kB)
+[2022-10-29T17:34:15.338Z] #8 43.31      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 499.9/499.9 KB 2.9 MB/s eta 0:00:00
+[2022-10-29T17:34:15.601Z] #8 43.72 Collecting scikit-learn
+[2022-10-29T17:34:15.862Z] #8 43.82   Downloading scikit_learn-1.1.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (31.2 MB)
+[2022-10-29T17:34:33.935Z] #8 59.21      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 31.2/31.2 MB 2.1 MB/s eta 0:00:00
+[2022-10-29T17:34:33.935Z] #8 59.39 Collecting six
+[2022-10-29T17:34:33.935Z] #8 59.50   Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+[2022-10-29T17:34:33.935Z] #8 59.87 Collecting atpublic>=2.3
+[2022-10-29T17:34:33.935Z] #8 59.99   Downloading atpublic-3.1.1-py3-none-any.whl (4.8 kB)
+[2022-10-29T17:34:33.935Z] #8 60.21 Collecting omegaconf~=2.2
+[2022-10-29T17:34:33.935Z] #8 60.32   Downloading omegaconf-2.2.3-py3-none-any.whl (79 kB)
+[2022-10-29T17:34:33.935Z] #8 60.34      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 79.3/79.3 KB 3.3 MB/s eta 0:00:00
+[2022-10-29T17:34:33.935Z] #8 60.47 Collecting antlr4-python3-runtime==4.9.*
+[2022-10-29T17:34:33.935Z] #8 60.58   Downloading antlr4-python3-runtime-4.9.3.tar.gz (117 kB)
+[2022-10-29T17:34:33.935Z] #8 60.61      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.0/117.0 KB 3.7 MB/s eta 0:00:00
+[2022-10-29T17:34:33.935Z] #8 60.64   Preparing metadata (setup.py): started
+[2022-10-29T17:34:33.935Z] #8 60.85   Preparing metadata (setup.py): finished with status 'done'
+[2022-10-29T17:34:33.935Z] #8 61.03 Collecting zipp>=0.5
+[2022-10-29T17:34:33.935Z] #8 61.14   Downloading zipp-3.10.0-py3-none-any.whl (6.2 kB)
+[2022-10-29T17:34:33.935Z] #8 61.39 Collecting MarkupSafe>=2.0
+[2022-10-29T17:34:33.935Z] #8 61.50   Downloading MarkupSafe-2.1.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+[2022-10-29T17:34:33.935Z] #8 61.88 Collecting charset-normalizer<3,>=2
+[2022-10-29T17:34:33.935Z] #8 61.99   Downloading charset_normalizer-2.1.1-py3-none-any.whl (39 kB)
+[2022-10-29T17:34:34.200Z] #8 62.15 Collecting certifi>=2017.4.17
+[2022-10-29T17:34:34.200Z] #8 62.27   Downloading certifi-2022.9.24-py3-none-any.whl (161 kB)
+[2022-10-29T17:34:34.200Z] #8 62.31      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 161.1/161.1 KB 3.7 MB/s eta 0:00:00
+[2022-10-29T17:34:34.466Z] #8 62.46 Collecting idna<4,>=2.5
+[2022-10-29T17:34:34.466Z] #8 62.57   Downloading idna-3.4-py3-none-any.whl (61 kB)
+[2022-10-29T17:34:34.466Z] #8 62.59      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.5/61.5 KB 3.2 MB/s eta 0:00:00
+[2022-10-29T17:34:34.728Z] #8 62.78 Collecting urllib3<1.27,>=1.21.1
+[2022-10-29T17:34:34.992Z] #8 62.89   Downloading urllib3-1.26.12-py2.py3-none-any.whl (140 kB)
+[2022-10-29T17:34:34.992Z] #8 62.93      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 140.4/140.4 KB 3.2 MB/s eta 0:00:00
+[2022-10-29T17:34:34.992Z] #8 63.11 Collecting pygments<3.0.0,>=2.6.0
+[2022-10-29T17:34:35.253Z] #8 63.22   Downloading Pygments-2.13.0-py3-none-any.whl (1.1 MB)
+[2022-10-29T17:34:35.515Z] #8 63.53      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 3.6 MB/s eta 0:00:00
+[2022-10-29T17:34:35.515Z] #8 63.66 Collecting commonmark<0.10.0,>=0.9.0
+[2022-10-29T17:34:35.515Z] #8 63.77   Downloading commonmark-0.9.1-py2.py3-none-any.whl (51 kB)
+[2022-10-29T17:34:35.779Z] #8 63.79      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 51.1/51.1 KB 3.4 MB/s eta 0:00:00
+[2022-10-29T17:34:36.043Z] #8 63.96 Collecting ruamel.yaml.clib>=0.2.6
+[2022-10-29T17:34:36.043Z] #8 64.08   Downloading ruamel.yaml.clib-0.2.7-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl (555 kB)
+[2022-10-29T17:34:36.306Z] #8 64.23      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 555.3/555.3 KB 3.8 MB/s eta 0:00:00
+[2022-10-29T17:34:36.306Z] #8 64.34 Requirement already satisfied: setuptools in /usr/local/lib/python3.8/site-packages (from zc.lockfile>=1.2.1->dvc==2.30.0->-r requirements.txt (line 2)) (57.5.0)
+[2022-10-29T17:34:36.569Z] #8 64.55 Collecting joblib>=1.0.0
+[2022-10-29T17:34:36.569Z] #8 64.66   Downloading joblib-1.2.0-py3-none-any.whl (297 kB)
+[2022-10-29T17:34:36.569Z] #8 64.73      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 298.0/298.0 KB 4.3 MB/s eta 0:00:00
+[2022-10-29T17:34:37.129Z] #8 65.13 Collecting scipy>=1.3.2
+[2022-10-29T17:34:37.129Z] #8 65.24   Downloading scipy-1.9.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (33.8 MB)
+[2022-10-29T17:34:52.011Z] #8 79.68      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 33.8/33.8 MB 2.2 MB/s eta 0:00:00
+[2022-10-29T17:34:52.011Z] #8 79.85 Collecting threadpoolctl>=2.0.0
+[2022-10-29T17:34:52.011Z] #8 79.96   Downloading threadpoolctl-3.1.0-py3-none-any.whl (14 kB)
+[2022-10-29T17:34:52.583Z] #8 80.67 Collecting aiohttp
+[2022-10-29T17:34:52.849Z] #8 80.78   Downloading aiohttp-3.8.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.0 MB)
+[2022-10-29T17:34:53.425Z] #8 81.53      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 1.4 MB/s eta 0:00:00
+[2022-10-29T17:34:54.372Z] #8 82.13 Collecting cryptography>=3.1
+[2022-10-29T17:34:54.372Z] #8 82.29   Downloading cryptography-38.0.1-cp36-abi3-manylinux_2_28_x86_64.whl (4.2 MB)
+[2022-10-29T17:34:57.658Z] #8 85.15      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.2/4.2 MB 1.5 MB/s eta 0:00:00
+[2022-10-29T17:34:57.658Z] #8 85.54 Collecting click-didyoumean>=0.0.3
+[2022-10-29T17:34:57.658Z] #8 85.64   Downloading click_didyoumean-0.3.0-py3-none-any.whl (2.7 kB)
+[2022-10-29T17:34:57.658Z] #8 85.78 Collecting click-repl>=0.2.0
+[2022-10-29T17:34:57.658Z] #8 85.89   Downloading click_repl-0.2.0-py3-none-any.whl (5.2 kB)
+[2022-10-29T17:34:57.922Z] #8 86.06 Collecting click-plugins>=1.1.1
+[2022-10-29T17:34:57.922Z] #8 86.16   Downloading click_plugins-1.1.1-py2.py3-none-any.whl (7.5 kB)
+[2022-10-29T17:34:58.189Z] #8 86.32 Collecting billiard<4.0,>=3.6.4.0
+[2022-10-29T17:34:58.189Z] #8 86.43   Downloading billiard-3.6.4.0-py3-none-any.whl (89 kB)
+[2022-10-29T17:34:58.453Z] #8 86.49      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 89.5/89.5 KB 1.6 MB/s eta 0:00:00
+[2022-10-29T17:34:58.705Z] #8 86.63 Collecting vine<6.0,>=5.0.0
+[2022-10-29T17:34:58.705Z] #8 86.74   Downloading vine-5.0.0-py2.py3-none-any.whl (9.4 kB)
+[2022-10-29T17:34:58.970Z] #8 87.19 Collecting gitdb<5,>=4.0.1
+[2022-10-29T17:34:59.233Z] #8 87.30   Downloading gitdb-4.0.9-py3-none-any.whl (63 kB)
+[2022-10-29T17:34:59.233Z] #8 87.34      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 63.1/63.1 KB 1.6 MB/s eta 0:00:00
+[2022-10-29T17:34:59.497Z] #8 87.57 Collecting amqp<6.0.0,>=5.0.9
+[2022-10-29T17:34:59.498Z] #8 87.68   Downloading amqp-5.1.1-py3-none-any.whl (50 kB)
+[2022-10-29T17:34:59.762Z] #8 87.71      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.8/50.8 KB 1.5 MB/s eta 0:00:00
+[2022-10-29T17:35:00.031Z] #8 88.25 Collecting cffi>=1.9.1
+[2022-10-29T17:35:00.288Z] #8 88.36   Downloading cffi-1.15.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (442 kB)
+[2022-10-29T17:35:00.550Z] #8 88.64      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 442.7/442.7 KB 1.6 MB/s eta 0:00:00
+[2022-10-29T17:35:00.816Z] #8 89.07 Collecting aiosignal>=1.1.2
+[2022-10-29T17:35:01.079Z] #8 89.18   Downloading aiosignal-1.2.0-py3-none-any.whl (8.2 kB)
+[2022-10-29T17:35:01.333Z] #8 89.59 Collecting yarl<2.0,>=1.0
+[2022-10-29T17:35:01.595Z] #8 89.70   Downloading yarl-1.8.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (262 kB)
+[2022-10-29T17:35:01.861Z] #8 89.87      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 262.1/262.1 KB 1.6 MB/s eta 0:00:00
+[2022-10-29T17:35:02.124Z] #8 90.15 Collecting frozenlist>=1.1.1
+[2022-10-29T17:35:02.124Z] #8 90.28   Downloading frozenlist-1.3.1-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (161 kB)
+[2022-10-29T17:35:02.124Z] #8 90.39      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 161.3/161.3 KB 1.5 MB/s eta 0:00:00
+[2022-10-29T17:35:03.075Z] #8 91.02 Collecting multidict<7.0,>=4.5
+[2022-10-29T17:35:03.075Z] #8 91.13   Downloading multidict-6.0.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (121 kB)
+[2022-10-29T17:35:03.075Z] #8 91.21      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 121.3/121.3 KB 1.6 MB/s eta 0:00:00
+[2022-10-29T17:35:03.341Z] #8 91.34 Collecting async-timeout<5.0,>=4.0.0a3
+[2022-10-29T17:35:03.341Z] #8 91.45   Downloading async_timeout-4.0.2-py3-none-any.whl (5.8 kB)
+[2022-10-29T17:35:03.602Z] #8 91.63 Collecting pycparser
+[2022-10-29T17:35:03.602Z] #8 91.74   Downloading pycparser-2.21-py2.py3-none-any.whl (118 kB)
+[2022-10-29T17:35:03.869Z] #8 91.81      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 118.7/118.7 KB 1.7 MB/s eta 0:00:00
+[2022-10-29T17:35:04.132Z] #8 92.07 Collecting prompt-toolkit
+[2022-10-29T17:35:04.132Z] #8 92.21   Downloading prompt_toolkit-3.0.31-py3-none-any.whl (382 kB)
+[2022-10-29T17:35:04.708Z] #8 92.54      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 382.3/382.3 KB 1.2 MB/s eta 0:00:00
+[2022-10-29T17:35:04.708Z] #8 92.74 Collecting smmap<6,>=3.0.1
+[2022-10-29T17:35:04.960Z] #8 92.84   Downloading smmap-5.0.0-py3-none-any.whl (24 kB)
+[2022-10-29T17:35:05.225Z] #8 93.16 Collecting wcwidth
+[2022-10-29T17:35:05.225Z] #8 93.27   Downloading wcwidth-0.2.5-py2.py3-none-any.whl (30 kB)
+[2022-10-29T17:35:05.225Z] #8 93.38 Building wheels for collected packages: sklearn, configobj, antlr4-python3-runtime, nanotime, future
+[2022-10-29T17:35:05.477Z] #8 93.38   Building wheel for sklearn (setup.py): started
+[2022-10-29T17:35:05.742Z] #8 93.70   Building wheel for sklearn (setup.py): finished with status 'done'
+[2022-10-29T17:35:05.742Z] #8 93.70   Created wheel for sklearn: filename=sklearn-0.0-py2.py3-none-any.whl size=1310 sha256=74a4615b474bd35be4dcfd8c116cbf17ba97e475ebc2f72fcffb7a8515d53f97
+[2022-10-29T17:35:05.742Z] #8 93.70   Stored in directory: /root/.cache/pip/wheels/22/0b/40/fd3f795caaa1fb4c6cb738bc1f56100be1e57da95849bfc897
+[2022-10-29T17:35:05.742Z] #8 93.70   Building wheel for configobj (setup.py): started
+[2022-10-29T17:35:05.742Z] #8 93.98   Building wheel for configobj (setup.py): finished with status 'done'
+[2022-10-29T17:35:05.994Z] #8 93.99   Created wheel for configobj: filename=configobj-5.0.6-py3-none-any.whl size=34547 sha256=4ce44c1939c0fcd1dbec38662d4dcb01ced8e92f412580aacc1981e62a00750d
+[2022-10-29T17:35:05.994Z] #8 93.99   Stored in directory: /root/.cache/pip/wheels/34/2a/24/a490264ae9041fd48f778ff393526572c80bb498ddecb07ea5
+[2022-10-29T17:35:05.994Z] #8 93.99   Building wheel for antlr4-python3-runtime (setup.py): started
+[2022-10-29T17:35:06.249Z] #8 94.30   Building wheel for antlr4-python3-runtime (setup.py): finished with status 'done'
+[2022-10-29T17:35:06.249Z] #8 94.30   Created wheel for antlr4-python3-runtime: filename=antlr4_python3_runtime-4.9.3-py3-none-any.whl size=144575 sha256=279f0e115166a3478985ab4372da0e119af67e0db6f540261d7491335bb399c1
+[2022-10-29T17:35:06.249Z] #8 94.30   Stored in directory: /root/.cache/pip/wheels/b1/a3/c2/6df046c09459b73cc9bb6c4401b0be6c47048baf9a1617c485
+[2022-10-29T17:35:06.249Z] #8 94.31   Building wheel for nanotime (setup.py): started
+[2022-10-29T17:35:06.502Z] #8 94.57   Building wheel for nanotime (setup.py): finished with status 'done'
+[2022-10-29T17:35:06.502Z] #8 94.57   Created wheel for nanotime: filename=nanotime-0.5.2-py3-none-any.whl size=2441 sha256=7ac15ebe9bfc100486c1bc2c22b058feae3df1e362147330ecd2a99783f2b87a
+[2022-10-29T17:35:06.502Z] #8 94.57   Stored in directory: /root/.cache/pip/wheels/59/72/23/ea2daa0727a9f7824c0656b73c1f3d8d13f5327729eadb7084
+[2022-10-29T17:35:06.502Z] #8 94.58   Building wheel for future (setup.py): started
+[2022-10-29T17:35:07.068Z] #8 95.06   Building wheel for future (setup.py): finished with status 'done'
+[2022-10-29T17:35:07.068Z] #8 95.07   Created wheel for future: filename=future-0.18.2-py3-none-any.whl size=491070 sha256=a0c0894974cfe87c0406685e63875b6ed55f906c8817ce1ce62dd0f346dfb144
+[2022-10-29T17:35:07.068Z] #8 95.07   Stored in directory: /root/.cache/pip/wheels/8e/70/28/3d6ccd6e315f65f245da085482a2e1c7d14b90b30f239e2cf4
+[2022-10-29T17:35:07.068Z] #8 95.07 Successfully built sklearn configobj antlr4-python3-runtime nanotime future
+[2022-10-29T17:35:08.446Z] #8 96.20 Installing collected packages: wcwidth, voluptuous, pytz, pygtrie, nanotime, funcy, dictdiffer, commonmark, billiard, appdirs, antlr4-python3-runtime, zipp, zc.lockfile, vine, urllib3, typing-extensions, tqdm, tomlkit, threadpoolctl, tabulate, smmap, six, shtab, shortuuid, ruamel.yaml.clib, pyyaml, pyparsing, pygments, pycparser, psutil, prompt-toolkit, pathspec, numpy, networkx, multidict, MarkupSafe, joblib, itsdangerous, idna, future, fsspec, frozenlist, filelock, dvc-render, dpath, distro, diskcache, coverage, colorama, click, charset-normalizer, certifi, attrs, atpublic, async-timeout, yarl, Werkzeug, scipy, ruamel.yaml, rich, requests, python-dateutil, pydot, packaging, omegaconf, Jinja2, importlib-resources, importlib-metadata, grandalf, gitdb, flufl.lock, flatten-dict, dvc-objects, dulwich, configobj, click-repl, click-plugins, click-didyoumean, cffi, amqp, aiosignal, scikit-learn, pygit2, pandas, kombu, iterative-telemetry, hydra-core, gitpython, flask, dvclive, dvc-data, cryptography, aiohttp, sklearn, celery, asyncssh, aiohttp-retry, scmrepo, dvc-task, dvc-http, dvc
+[2022-10-29T17:35:30.358Z] #8 117.0 Successfully installed Jinja2-3.1.2 MarkupSafe-2.1.1 Werkzeug-2.2.2 aiohttp-3.8.3 aiohttp-retry-2.8.3 aiosignal-1.2.0 amqp-5.1.1 antlr4-python3-runtime-4.9.3 appdirs-1.4.4 async-timeout-4.0.2 asyncssh-2.12.0 atpublic-3.1.1 attrs-22.1.0 billiard-3.6.4.0 celery-5.2.7 certifi-2022.9.24 cffi-1.15.1 charset-normalizer-2.1.1 click-8.1.3 click-didyoumean-0.3.0 click-plugins-1.1.1 click-repl-0.2.0 colorama-0.4.6 commonmark-0.9.1 configobj-5.0.6 coverage-6.5.0 cryptography-38.0.1 dictdiffer-0.9.0 diskcache-5.4.0 distro-1.8.0 dpath-2.0.6 dulwich-0.20.46 dvc-2.30.0 dvc-data-0.17.1 dvc-http-2.27.2 dvc-objects-0.7.0 dvc-render-0.0.12 dvc-task-0.1.3 dvclive-0.12.1 filelock-3.8.0 flask-2.2.2 flatten-dict-0.4.2 flufl.lock-7.1.1 frozenlist-1.3.1 fsspec-2022.10.0 funcy-1.17 future-0.18.2 gitdb-4.0.9 gitpython-3.1.29 grandalf-0.6 hydra-core-1.2.0 idna-3.4 importlib-metadata-5.0.0 importlib-resources-5.10.0 iterative-telemetry-0.0.5 itsdangerous-2.1.2 joblib-1.2.0 kombu-5.2.4 multidict-6.0.2 nanotime-0.5.2 networkx-2.8.7 numpy-1.23.3 omegaconf-2.2.3 packaging-21.3 pandas-1.5.0 pathspec-0.9.0 prompt-toolkit-3.0.31 psutil-5.9.3 pycparser-2.21 pydot-1.4.2 pygit2-1.10.1 pygments-2.13.0 pygtrie-2.5.0 pyparsing-3.0.9 python-dateutil-2.8.2 pytz-2022.5 pyyaml-6.0 requests-2.28.1 rich-12.6.0 ruamel.yaml-0.17.21 ruamel.yaml.clib-0.2.7 scikit-learn-1.1.3 scipy-1.9.3 scmrepo-0.1.1 shortuuid-1.0.9 shtab-1.5.6 six-1.16.0 sklearn-0.0 smmap-5.0.0 tabulate-0.9.0 threadpoolctl-3.1.0 tomlkit-0.11.6 tqdm-4.64.1 typing-extensions-4.4.0 urllib3-1.26.12 vine-5.0.0 voluptuous-0.13.1 wcwidth-0.2.5 yarl-1.8.1 zc.lockfile-2.0 zipp-3.10.0
+[2022-10-29T17:35:30.358Z] #8 117.0 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[2022-10-29T17:35:30.358Z] #8 117.4 WARNING: You are using pip version 22.0.4; however, version 22.3 is available.
+[2022-10-29T17:35:30.358Z] #8 117.4 You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+[2022-10-29T17:35:30.622Z] #8 DONE 118.6s
+[2022-10-29T17:35:30.622Z] 
+[2022-10-29T17:35:30.622Z] #9 exporting to image
+[2022-10-29T17:35:30.622Z] #9 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
+[2022-10-29T17:35:30.622Z] #9 exporting layers
+[2022-10-29T17:35:35.902Z] #9 exporting layers 4.7s done
+[2022-10-29T17:35:35.902Z] #9 writing image sha256:da3f63c0e308e95e4aa29a86752b4c84a5aa2c651726849aafd347aff1d05a89 done
+[2022-10-29T17:35:35.902Z] #9 naming to docker.io/jenyanorilsk/mle_lab:latest done
+[2022-10-29T17:35:35.902Z] #9 DONE 4.7s
+[2022-10-29T17:35:35.902Z] 
+[2022-10-29T17:35:35.902Z] Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+[Pipeline] bat
+[2022-10-29T17:35:36.185Z] 
+[2022-10-29T17:35:36.186Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop>chcp 65001 
+[2022-10-29T17:35:36.186Z] Active code page: 65001
+[2022-10-29T17:35:36.186Z] 
+[2022-10-29T17:35:36.186Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop>cd mle_1_homework 
+[2022-10-29T17:35:36.186Z] 
+[2022-10-29T17:35:36.186Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop\mle_1_homework>docker-compose up -d 
+[2022-10-29T17:35:37.132Z] Creating mle_1_homework_web_1 ... 
+[2022-10-29T17:35:38.068Z] Creating mle_1_homework_web_1 ... done
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Checkout container logs)
+[Pipeline] dir
+[2022-10-29T17:35:38.245Z] Running in C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop\mle_1_homework
+[Pipeline] {
+[Pipeline] bat
+[2022-10-29T17:35:38.555Z] 
+[2022-10-29T17:35:38.556Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop\mle_1_homework>chcp 65001 
+[2022-10-29T17:35:38.556Z] Active code page: 65001
+[2022-10-29T17:35:38.556Z] 
+[2022-10-29T17:35:38.556Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop\mle_1_homework>docker-compose up -d 
+[2022-10-29T17:35:39.505Z] mle_1_homework_web_1 is up-to-date
+[2022-10-29T17:35:39.505Z] 
+[2022-10-29T17:35:39.505Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop\mle_1_homework>for /F %i in ('docker ps -qf "name=^mle_1_homework_web_1"') do set containerId=%i 
+[2022-10-29T17:35:39.769Z] 
+[2022-10-29T17:35:39.769Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop\mle_1_homework>set containerId=4bc0b237336d 
+[2022-10-29T17:35:39.769Z] 
+[2022-10-29T17:35:39.769Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop\mle_1_homework>echo 4bc0b237336d 
+[2022-10-29T17:35:39.769Z] 4bc0b237336d
+[2022-10-29T17:35:39.769Z] 
+[2022-10-29T17:35:39.769Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop\mle_1_homework>IF "4bc0b237336d" == "" (echo "No container running" ) 
+[2022-10-29T17:35:39.769Z] 
+[2022-10-29T17:35:39.769Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop\mle_1_homework>ELSE ( 
+[2022-10-29T17:35:39.769Z] 'ELSE' is not recognized as an internal or external command,
+[2022-10-29T17:35:39.769Z] operable program or batch file.
+[2022-10-29T17:35:39.769Z] 
+[2022-10-29T17:35:39.769Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop\mle_1_homework>docker logs --tail 1000 -f 4bc0b237336d 
+[2022-10-29T17:35:39.769Z] 2022-10-29 17:35:38,817 — __main__ — INFO — DataMaker is ready
+[2022-10-29T17:35:39.769Z] 2022-10-29 17:35:38,882 — __main__ — INFO — X and y data are ready
+[2022-10-29T17:35:39.769Z] 2022-10-29 17:35:38,912 — __main__ — INFO — /app/data/train/spam_X.csv is saved
+[2022-10-29T17:35:39.769Z] 2022-10-29 17:35:38,921 — __main__ — INFO — /app/data/train/spam_y.csv is saved
+[2022-10-29T17:35:39.769Z] 2022-10-29 17:35:38,926 — __main__ — INFO — /app/data/test/spam_X.csv is saved
+[2022-10-29T17:35:39.769Z] 2022-10-29 17:35:38,929 — __main__ — INFO — /app/data/test/spam_y.csv is saved
+[2022-10-29T17:35:39.769Z] 2022-10-29 17:35:38,930 — __main__ — INFO — Train and test data are ready
+[2022-10-29T17:35:40.034Z] 2022-10-29 17:35:39,944 — __main__ — INFO — SpamClassifier is ready
+[2022-10-29T17:35:40.286Z] accuracy: 0.9829596412556054
+[2022-10-29T17:35:40.286Z] confusion matrix:
+[2022-10-29T17:35:40.286Z] [[963   2]
+[2022-10-29T17:35:40.286Z]  [ 17 133]]
+[2022-10-29T17:35:40.286Z] classification report:
+[2022-10-29T17:35:40.286Z]               precision    recall  f1-score   support
+[2022-10-29T17:35:40.286Z] 
+[2022-10-29T17:35:40.286Z]          ham       0.98      1.00      0.99       965
+[2022-10-29T17:35:40.286Z]         spam       0.99      0.89      0.93       150
+[2022-10-29T17:35:40.286Z] 
+[2022-10-29T17:35:40.286Z]     accuracy                           0.98      1115
+[2022-10-29T17:35:40.286Z]    macro avg       0.98      0.94      0.96      1115
+[2022-10-29T17:35:40.286Z] weighted avg       0.98      0.98      0.98      1115
+[2022-10-29T17:35:40.286Z] 
+[2022-10-29T17:35:40.286Z] 2022-10-29 17:35:40,102 — __main__ — INFO — /app/experiments/model.sav is saved
+[2022-10-29T17:35:41.231Z] 2022-10-29 17:35:40,974 — __main__ — INFO — Predictor is ready
+[2022-10-29T17:35:41.231Z] model has 1.0 score
+[2022-10-29T17:35:41.231Z] 2022-10-29 17:35:40,977 — __main__ — INFO — /app/experiments/model.sav passed func test /app/tests/test_0.json
+[2022-10-29T17:35:42.160Z] 2022-10-29 17:35:42,102 — preprocess — INFO — DataMaker is ready
+[2022-10-29T17:35:42.160Z] 2022-10-29 17:35:42,144 — preprocess — INFO — X and y data are ready
+[2022-10-29T17:35:42.160Z] 2022-10-29 17:35:42,145 — preprocess — INFO — DataMaker is ready
+[2022-10-29T17:35:42.160Z] 2022-10-29 17:35:42,145 — preprocess — INFO — DataMaker is ready
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,170 — preprocess — INFO — /app/data/spam_X.csv is saved
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,170 — preprocess — INFO — /app/data/spam_X.csv is saved
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,171 — preprocess — INFO — DataMaker is ready
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,171 — preprocess — INFO — DataMaker is ready
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,171 — preprocess — INFO — DataMaker is ready
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,208 — preprocess — INFO — X and y data are ready
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,208 — preprocess — INFO — X and y data are ready
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,208 — preprocess — INFO — X and y data are ready
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,234 — preprocess — INFO — /app/data/train/spam_X.csv is saved
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,234 — preprocess — INFO — /app/data/train/spam_X.csv is saved
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,234 — preprocess — INFO — /app/data/train/spam_X.csv is saved
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,243 — preprocess — INFO — /app/data/train/spam_y.csv is saved
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,243 — preprocess — INFO — /app/data/train/spam_y.csv is saved
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,243 — preprocess — INFO — /app/data/train/spam_y.csv is saved
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,247 — preprocess — INFO — /app/data/test/spam_X.csv is saved
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,247 — preprocess — INFO — /app/data/test/spam_X.csv is saved
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,247 — preprocess — INFO — /app/data/test/spam_X.csv is saved
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,251 — preprocess — INFO — /app/data/test/spam_y.csv is saved
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,251 — preprocess — INFO — /app/data/test/spam_y.csv is saved
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,251 — preprocess — INFO — /app/data/test/spam_y.csv is saved
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,251 — preprocess — INFO — Train and test data are ready
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,251 — preprocess — INFO — Train and test data are ready
+[2022-10-29T17:35:42.412Z] 2022-10-29 17:35:42,251 — preprocess — INFO — Train and test data are ready
+[2022-10-29T17:35:42.412Z] ...
+[2022-10-29T17:35:42.412Z] ----------------------------------------------------------------------
+[2022-10-29T17:35:42.412Z] Ran 3 tests in 0.150s
+[2022-10-29T17:35:42.412Z] 
+[2022-10-29T17:35:42.412Z] OK
+[2022-10-29T17:35:43.767Z] 2022-10-29 17:35:43,380 — train — INFO — SpamClassifier is ready
+[2022-10-29T17:35:43.767Z] 2022-10-29 17:35:43,525 — train — INFO — /app/experiments/model.sav is saved
+[2022-10-29T17:35:43.767Z] .
+[2022-10-29T17:35:43.767Z] ----------------------------------------------------------------------
+[2022-10-29T17:35:43.767Z] Ran 1 test in 0.164s
+[2022-10-29T17:35:43.767Z] 
+[2022-10-29T17:35:43.767Z] OK
+[2022-10-29T17:35:45.147Z] 2022-10-29 17:35:44,722 — predict — INFO — Predictor is ready
+[2022-10-29T17:35:45.147Z] .
+[2022-10-29T17:35:45.147Z] ----------------------------------------------------------------------
+[2022-10-29T17:35:45.147Z] Ran 1 test in 0.013s
+[2022-10-29T17:35:45.147Z] 
+[2022-10-29T17:35:45.147Z] OK
+[2022-10-29T17:35:45.147Z] Name                                Stmts   Miss  Cover   Missing
+[2022-10-29T17:35:45.147Z] -----------------------------------------------------------------
+[2022-10-29T17:35:45.147Z] src/logger.py                          24      0   100%
+[2022-10-29T17:35:45.147Z] src/predict.py                         84     43    49%   58-60, 66-121, 128-129
+[2022-10-29T17:35:45.147Z] src/preprocess.py                      67      9    87%   59-60, 68-70, 75, 81, 106-107
+[2022-10-29T17:35:45.147Z] src/train.py                           60     11    82%   48-50, 52-57, 74-75
+[2022-10-29T17:35:45.147Z] src/unit_tests/test_predict.py         16      0   100%
+[2022-10-29T17:35:45.147Z] src/unit_tests/test_preprocess.py      20      0   100%
+[2022-10-29T17:35:45.147Z] src/unit_tests/test_train.py           16      0   100%
+[2022-10-29T17:35:45.147Z] -----------------------------------------------------------------
+[2022-10-29T17:35:45.147Z] TOTAL                                 287     63    78%
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Checkout coverage report)
+[Pipeline] dir
+[2022-10-29T17:35:45.275Z] Running in C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop\mle_1_homework
+[Pipeline] {
+[Pipeline] bat
+[2022-10-29T17:35:45.588Z] 
+[2022-10-29T17:35:45.588Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop\mle_1_homework>chcp 65001 
+[2022-10-29T17:35:45.588Z] Active code page: 65001
+[2022-10-29T17:35:45.588Z] 
+[2022-10-29T17:35:45.588Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop\mle_1_homework>docker-compose logs -t --tail 10 
+[2022-10-29T17:35:46.165Z] Attaching to mle_1_homework_web_1
+[2022-10-29T17:35:46.165Z] [36mweb_1  |[0m 2022-10-29T17:35:44.958397508Z -----------------------------------------------------------------
+[2022-10-29T17:35:46.165Z] [36mweb_1  |[0m 2022-10-29T17:35:44.958743337Z src/logger.py                          24      0   100%
+[2022-10-29T17:35:46.165Z] [36mweb_1  |[0m 2022-10-29T17:35:44.958775888Z src/predict.py                         84     43    49%   58-60, 66-121, 128-129
+[2022-10-29T17:35:46.165Z] [36mweb_1  |[0m 2022-10-29T17:35:44.958784915Z src/preprocess.py                      67      9    87%   59-60, 68-70, 75, 81, 106-107
+[2022-10-29T17:35:46.165Z] [36mweb_1  |[0m 2022-10-29T17:35:44.958788040Z src/train.py                           60     11    82%   48-50, 52-57, 74-75
+[2022-10-29T17:35:46.165Z] [36mweb_1  |[0m 2022-10-29T17:35:44.958790926Z src/unit_tests/test_predict.py         16      0   100%
+[2022-10-29T17:35:46.165Z] [36mweb_1  |[0m 2022-10-29T17:35:44.958793631Z src/unit_tests/test_preprocess.py      20      0   100%
+[2022-10-29T17:35:46.165Z] [36mweb_1  |[0m 2022-10-29T17:35:44.958796196Z src/unit_tests/test_train.py           16      0   100%
+[2022-10-29T17:35:46.165Z] [36mweb_1  |[0m 2022-10-29T17:35:44.958798811Z -----------------------------------------------------------------
+[2022-10-29T17:35:46.165Z] [36mweb_1  |[0m 2022-10-29T17:35:44.958801295Z TOTAL                                 287     63    78%
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push)
+[Pipeline] bat
+[2022-10-29T17:35:46.867Z] 
+[2022-10-29T17:35:46.867Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop>chcp 65001 
+[2022-10-29T17:35:46.867Z] Active code page: 65001
+[2022-10-29T17:35:46.867Z] 
+[2022-10-29T17:35:46.867Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop>docker push jenyanorilsk/mle_lab:latest 
+[2022-10-29T17:35:46.867Z] The push refers to repository [docker.io/jenyanorilsk/mle_lab]
+[2022-10-29T17:35:47.805Z] 8ae5c0ea0662: Preparing
+[2022-10-29T17:35:47.805Z] 248bf2b29422: Preparing
+[2022-10-29T17:35:47.805Z] 0048ef11e61d: Preparing
+[2022-10-29T17:35:47.805Z] 4531003f44fb: Preparing
+[2022-10-29T17:35:47.805Z] 2a5f58dab527: Preparing
+[2022-10-29T17:35:47.805Z] e4adf276765a: Preparing
+[2022-10-29T17:35:47.805Z] 4cd6d007fbd6: Preparing
+[2022-10-29T17:35:47.805Z] 608f3a074261: Preparing
+[2022-10-29T17:35:47.805Z] e4adf276765a: Waiting
+[2022-10-29T17:35:47.805Z] 4cd6d007fbd6: Waiting
+[2022-10-29T17:35:47.805Z] 608f3a074261: Waiting
+[2022-10-29T17:35:49.713Z] 2a5f58dab527: Layer already exists
+[2022-10-29T17:35:49.713Z] 0048ef11e61d: Layer already exists
+[2022-10-29T17:35:49.713Z] 4531003f44fb: Layer already exists
+[2022-10-29T17:35:51.088Z] e4adf276765a: Layer already exists
+[2022-10-29T17:35:51.088Z] 4cd6d007fbd6: Layer already exists
+[2022-10-29T17:35:51.088Z] 608f3a074261: Layer already exists
+[2022-10-29T17:35:54.376Z] 248bf2b29422: Pushed
+[2022-10-29T17:37:45.797Z] 8ae5c0ea0662: Pushed
+[2022-10-29T17:37:49.964Z] latest: digest: sha256:25801fb8d357e848d6cbbc2875473801656303d2c19b52d72208bf32d07e16df size: 2001
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] bat
+[2022-10-29T17:37:50.307Z] 
+[2022-10-29T17:37:50.307Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop>chcp 65001 
+[2022-10-29T17:37:50.307Z] Active code page: 65001
+[2022-10-29T17:37:50.307Z] 
+[2022-10-29T17:37:50.307Z] C:\ProgramData\Jenkins\.jenkins\workspace\mle_lab_ci_copy_develop>docker logout 
+[2022-10-29T17:37:50.307Z] Removing login credentials for https://index.docker.io/v1/
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+
+GitHub has been notified of this commit’s build result
+
+Finished: SUCCESS
