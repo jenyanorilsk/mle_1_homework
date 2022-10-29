@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Spam checking</title>
+</head>
+<body>
+    <h1>Welcome to <a href='/'>spam checking</a>!</h1>
+
+    <form method="post">
+        <input name="text" type="text" />
+        <input type="submit" value="Check!" />
+    </form>
+
+    {% if context is not none%}
+    <p>
+        <code>
+        &ldquo;{{ context['input_text']|safe }}&rdquo; is a <strong>{{ context['clf_result']|safe }}</strong>
+        </code>
+    </p>
+    {% endif %}
+
+    <p>
+        for demonstration purpose you can check out spam example:
+        <ul>
+            <li>"Your 2003 Account Statement for 07815296484 shows 800 un-redeemed S.I.M. points"</li>
+            <li>"FREE for 1st week! No1 Nokia tone 4 ur mob every week"</li>
+            <li>"You are awarded a SiPix Digital Camera!"</li>
+        </ul>
+    </p>
+
+</body>
+</html>  
