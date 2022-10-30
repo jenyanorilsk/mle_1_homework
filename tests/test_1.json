@@ -1,0 +1,24 @@
+{
+    "X": [
+        {
+            "text": "Your 2003 Account Statement for 07815296484 shows 800 un-redeemed S.I.M. points"
+        },
+        {
+            "text": "FREE for 1st week! No1 Nokia tone 4 ur mob every week"
+        },
+        {
+            "text": "You are awarded a SiPix Digital Camera!"
+        }
+    ],
+    "y": [
+        {
+            "classname": "spam"
+        },
+        {
+            "classname": "spam"
+        },
+        {
+            "classname": "spam"
+        }
+    ]
+}

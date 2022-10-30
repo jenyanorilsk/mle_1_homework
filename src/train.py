@@ -20,6 +20,11 @@ SHOW_LOG = True
 class SpamClassifier():
 
     def __init__(self) -> None:
+        """
+        default initialization of preprocessing
+        here we define routes to experiment, model and data files and nothing else
+        """
+
         logger = Logger(SHOW_LOG)
         self.config = configparser.ConfigParser()
         self.log = logger.get_logger(__name__)
@@ -42,12 +47,21 @@ class SpamClassifier():
         self.log.info("SpamClassifier is ready")
 
     def train_model(self, predict=False) -> bool:
+        """
+        creates model and train it on train subset
+        save trained model to binary file
+        """
+        # model using TFIDF for vactorizing words from original text
+        # and SVC classification model for prediction
         classifier = Pipeline([("tfidf", TfidfVectorizer()), ("clf", LinearSVC())])
+        # if we can't train model there is no sense to do something else
         try:
             classifier.fit(self.X_train, self.y_train)
         except Exception:
             self.log.error(traceback.format_exc())
             sys.exit(1)
+        # if flag is setted then run prediction on test subset and
+        # print results to users output
         if predict:
             y_pred = classifier.predict(self.X_test)
             print('accuracy:', accuracy_score(self.y_test, y_pred))
@@ -59,6 +73,9 @@ class SpamClassifier():
         return self.save_model(classifier, self.model_path, "MODEL", params)
 
     def save_model(self, classifier, path: str, name: str, params: dict) -> bool:
+        """
+        additional method for saving model to binary file and write models params into config
+        """
         self.config[name] = params
         os.remove(self.config_path)
         with open(self.config_path, 'w') as configfile:
