@@ -15,7 +15,11 @@ TEST_SIZE = 0.2
 class DataMaker():
 
     def __init__(self) -> None:
-        
+        """
+        default initialization of preprocessing
+        here we define routes to data files and nothing else
+        """
+
         logger = Logger(SHOW_LOG)
 
         self.config = configparser.ConfigParser()
@@ -40,6 +44,9 @@ class DataMaker():
         self.log.info("DataMaker is ready")
 
     def get_data(self) -> bool:
+        """
+        Here we reading a full dataset into memory
+        """
         
         dataset = pd.read_csv(self.data_path, encoding="ISO-8859-1")
         dataset.rename(columns={'v1':'classname', 'v2': 'text'}, inplace=True)
@@ -60,7 +67,10 @@ class DataMaker():
             return False
 
     def split_data(self, test_size=TEST_SIZE) -> bool:
-        
+        """
+        split dataset according to test part size which can be setted in config file
+        save splitted parts to files for train and test subset and update config file
+        """
         self.get_data()
         try:
             X = pd.read_csv(self.X_path, index_col=0)
@@ -96,6 +106,9 @@ class DataMaker():
             os.path.isfile(self.test_path[1])
 
     def save_splitted_data(self, df: pd.DataFrame, path: str) -> bool:
+        """
+        additional method for saving DataFrame to csv file
+        """
         df = df.reset_index(drop=True)
         df.to_csv(path, index=True)
         self.log.info(f'{path} is saved')

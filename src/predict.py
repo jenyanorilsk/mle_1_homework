@@ -26,8 +26,13 @@ SHOW_LOG = True
 class Predictor():
 
     def __init__(self) -> None:
+        """
+        default initialization of model
+        load config, test datasets and binary model into memory
+        """
 
         logger = Logger(SHOW_LOG)
+
         self.config = configparser.ConfigParser()
         self.log = logger.get_logger(__name__)
         self.config_path = os.path.join(os.getcwd(), 'config.ini')
@@ -50,9 +55,8 @@ class Predictor():
             self.config["SPLIT_DATA"]["y_test"], index_col=0)
         self.y_test = self.y_test['classname']
         
+        # if we can't load model there is no sense to do something else
         try:
-            #self.classifier = pickle.load(
-            #    open(self.config["MODEL"]["path"], "rb"))
             with open(self.config["MODEL"]["path"], "rb") as modelfile:
                 self.classifier = pickle.load(modelfile)
         except FileNotFoundError:
@@ -63,9 +67,15 @@ class Predictor():
 
     def predict(self) -> bool:
 
-        args = self.parser.parse_args()        
-        if args.tests == "smoke":
+        """
+        main method for test, which proccess smoke of functional tests
+        test type define as command string argument
+        """
 
+        args = self.parser.parse_args()
+
+        # try to run smoke test on stored test subset of data
+        if args.tests == "smoke":
             try:
                 y_pred = self.classifier.predict(self.X_test)
                 print('accuracy:', accuracy_score(self.y_test, y_pred))
@@ -78,7 +88,8 @@ class Predictor():
                 sys.exit(1)
             self.log.info(
                 f'{self.config["MODEL"]["path"]} passed smoke tests')
-            
+
+        # try to run functional tests which stored in json files
         elif args.tests == "func":
 
             tests_path = os.path.join(os.getcwd(), "tests")
@@ -121,6 +132,13 @@ class Predictor():
         return True
     
     def predict_spam(self, text: list) -> list:
+        """
+        method for interactive class prediction
+        returns list of strings with human-readable class names
+
+        params:
+        text -- a list of strings, each string is one message for classification
+        """
         return self.classifier.predict(text)
 
 
